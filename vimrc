@@ -4,6 +4,7 @@
 "vim-dispatch cammelcasemotion vim-fugitive tabular vim-autoclose syntastic
 "vim-visual-star-search
 
+
 "================================================== Config
 
 set number
@@ -58,7 +59,7 @@ set nostartofline
 "Ctrl+s/Ctrl+Q reach VIM
 silent !stty -ixon > /dev/null 2>/dev/null
 
-colorscheme kolor
+colorscheme solid
 set whichwrap+=<,>,h,l,[,]
 
 if has("persistent_undo")
@@ -93,6 +94,8 @@ inoremap <C-H> <Left>
 inoremap <C-L> <Right>
 inoremap <C-K> <Up>
 inoremap <C-J> <Down>
+
+inoremap <Nul> <Space>
 
 "Help as full window
 cnoremap hh H 
@@ -160,6 +163,18 @@ vnoremap D "_d
 nnoremap x "_x
 nnoremap c "_c
 
+let g:my_background_solid = 0
+command! -nargs=0 TB call ToggleBackground()
+function! ToggleBackground()
+    if g:my_background_solid == 1
+        let g:my_background_solid = 0
+        :colorscheme kolor
+    else
+        let g:my_background_solid = 1
+        :colorscheme solid
+    end
+endfunction
+nnoremap <F3> :TB<CR>
 
 "================================================== Plugin config
 
