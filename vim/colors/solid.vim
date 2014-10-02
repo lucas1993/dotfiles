@@ -58,7 +58,7 @@ set background=dark
 if exists("syntax_on")
     syntax reset
 endif
-let g:colors_name="kolor"
+let g:colors_name="solid"
 
 
 if !exists("g:kolor_bold")

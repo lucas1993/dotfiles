@@ -8,19 +8,21 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +48 proxy.py
-badd +11 logger.py
-badd +63 server.py
-badd +4 run.sh
+badd +17 /data/code/sb/macros.cpp
+badd +9 /data/code/sb/MacroTable.cpp
+badd +9 /data/code/sb/MacroTable.h
+badd +28 /data/code/sb/SB_TRAB1/Macro.h
+badd +6 /data/code/sb/SB_TRAB1/Macro.cpp
+badd +52 /data/code/sb/SB_TRAB1/defines.cpp
 silent! argdel *
-edit server.py
+edit /data/code/sb/SB_TRAB1/defines.cpp
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
 argglobal
-setlocal fdm=syntax
+setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
@@ -28,11 +30,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 45 - ((6 * winheight(0) + 21) / 43)
+silent! normal! zE
+let s:l = 52 - ((42 * winheight(0) + 21) / 43)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-45
+52
 normal! 0
 lcd /data/code/python/proxy
 tabnext 1

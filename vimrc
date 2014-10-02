@@ -163,20 +163,33 @@ vnoremap D "_d
 nnoremap x "_x
 nnoremap c "_c
 
-let g:my_background_solid = 0
 command! -nargs=0 TB call ToggleBackground()
 function! ToggleBackground()
-    if g:my_background_solid == 1
-        let g:my_background_solid = 0
+    if g:colors_name == "solid"
         :colorscheme kolor
     else
-        let g:my_background_solid = 1
         :colorscheme solid
     end
 endfunction
 nnoremap <F3> :TB<CR>
 
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
 "================================================== Plugin config
+
+"Pymode
+let g:pymode_indent = 1
+let g:pymode_folding = 1
+let g:pymode_run = 0
+let g:pymode_breakpoint_bind = '<leader>k'
+let g:pymode_lint = 0
+
+"Ultisnips
 
 let g:UltiSnipsExpandTrigger="<Tab>"
 let g:UltiSnipsJumpForwardTrigger="<Tab>"
@@ -186,7 +199,6 @@ nnoremap <F5> :GundoToggle<CR>
 
 let g:VimuxOrientation="h"
 let g:VimuxHeight="40"
-
 
 "CtrlP ignore
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.gif,*.png,*.pdf
@@ -199,6 +211,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline_theme="kolor"
 
 "Maneiro
 let g:airline_powerline_fonts = 1
