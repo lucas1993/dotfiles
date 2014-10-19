@@ -1,6 +1,6 @@
 """"" Plugins instalados (Check requirements)
 "ctrlp.vim  nerdcommenter nerdtree  vim-airline+(tmuxline)  vim-exchange
-"vim-startify  vim-surround ultisnips vim-easymotion emmet-vim gundo vimux 
+"vim-startify  vim-surround ultisnips vim-easymotion gundo vimux 
 "vim-dispatch cammelcasemotion vim-fugitive tabular vim-autoclose syntastic
 "vim-visual-star-search
 
@@ -9,9 +9,12 @@
 
 set number
 
-set tags=./.tags;
+set tags=./.tags
+set noswapfile
 
 syntax on
+
+set ttyfast
 
 let php_sql_query=1
 let php_htmlInStrings=1
@@ -85,6 +88,7 @@ map :Wq :wq
 
 nnoremap gi gi<Esc>
 nnoremap gl `.
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 "Help as vertical split
 cnoremap hv vert bo h
@@ -112,20 +116,18 @@ endfunction
 
 " :Nt as NerdTree
 map :Nt :NERDTree
-nnoremap <C-N> :NERDTreeToggle<CR>
+nnoremap <silent> <C-N> :NERDTreeToggle<CR>
 
 "Space as Leader
 let mapleader = "\<Space>"
 
 "<Leader>R/B to open mru/bufferlist
-noremap <Leader>r :CtrlPMRU<cr>
-noremap <Leader>b :CtrlPBuffer<cr>
+noremap <silent> <Leader>r :CtrlPMRU<cr>
+noremap <silent> <Leader>b :CtrlPBuffer<cr>
 
-noremap <Leader>i i_<Esc>r
+noremap <silent> <Leader>s :Startify<cr>
 
-noremap <Leader>s :Startify<cr>
-
-noremap <Leader>x :VimuxCloseRunner<cr>
+noremap <silent> <Leader>x :VimuxCloseRunner<cr>
 
 "Ctrl+s to save
 :map <C-s> :w <Enter>
@@ -140,17 +142,17 @@ noremap <Leader>x :VimuxCloseRunner<cr>
 :nnoremap <Leader>t :enew<CR>
 :nnoremap <Leader>e :e 
 
-:nnoremap <Tab> :bnext<CR>
-:nnoremap <S-Tab> :bprevious<CR>
-:nnoremap <Leader>q :bp <BAR> bd #<CR>
+:nnoremap <silent> <Tab> :bnext<CR>
+:nnoremap <silent> <S-Tab> :bprevious<CR>
+:nnoremap <silent> <Leader>q :bp <BAR> bd #<CR>
 
 "This unsets the "last search pattern" register by hitting return
-nnoremap <Leader>\ :noh<CR>
+nnoremap <silent> <Leader>\ :noh<CR>
 
 "Shift+J/K to insert line below/above without entering insert mode
 :nnoremap <S-J> o<ESC>
 :nnoremap <S-K> O<ESC>
-:nnoremap <Leader>j :join<cr>
+:nnoremap <silent> <Leader>j :join<cr>
 
 "Pipe ( | ) breaks line
 :nnoremap \| i<CR><ESC>
@@ -195,7 +197,7 @@ let g:UltiSnipsExpandTrigger="<Tab>"
 let g:UltiSnipsJumpForwardTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
-nnoremap <F5> :GundoToggle<CR>
+nnoremap <silent> <F5> :GundoToggle<CR>
 
 let g:VimuxOrientation="h"
 let g:VimuxHeight="40"
@@ -209,9 +211,13 @@ let g:ctrlp_working_path_mode = 'ra'
 " Enable the list of buffers
 let g:airline#extensions#tabline#enabled = 1
 
+"Mixed indent warning off
+let g:airline#extensions#whitespace#enabled = 0
+
 " Show just the filename
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_theme="kolor"
+let g:airline#extensions#syntastic#enabled = 1
 
 "Maneiro
 let g:airline_powerline_fonts = 1
@@ -220,24 +226,6 @@ let g:bufferline_echo = 0
 set noshowmode
 
 let g:UltiSnipsSnippetsDir = "/home/amaral/.vim/bundle/vim-snippets/UltiSnips"
-
-"""""
-"Emmet
-
-let g:user_emmet_settings = {
-\  'php' : {
-\    'extends' : 'html',
-\    'filters' : 'c',
-\  },
-\  'xml' : {
-\    'extends' : 'html',
-\  },
-\  'haml' : {
-\    'extends' : 'html',
-\  },
-\}
-
-let g:user_emmet_leader_key='<C-Q>'
 
 """""
 

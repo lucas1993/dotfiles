@@ -1,0 +1,1002 @@
+q
+step
+run
+step
+help
+help all
+q
+y
+info threads
+quit
+r
+bt
+where
+b main
+r
+y
+n
+p a
+n
+p b
+s
+p i
+p ip
+p *ip
+n
+n
+q
+stop 8
+r
+b 8
+r
+y
+print arr
+q
+y
+b 8
+r
+print arr
+print arr._M_impl
+print arr._M_impl._M_start
+print *(arr._M_impl._M_start)
+print *(arr._M_impl._M_start)@2
+print *(arr._M_impl._M_start)@3
+quit
+y
+quit
+r
+p test
+p test.y
+print main
+type test
+ptype test
+ptype main
+quit
+y
+run
+quit
+y
+quit
+run
+8
+1000000
+2
+2
+run
+y
+8
+100000
+run
+y
+8 100000
+q
+y
+run
+8 100000
+q
+y
+run
+where
+q
+y
+run a.out
+file a.out
+q
+run
+where
+break passagem_macros
+run
+y
+n
+s
+run
+n
+s
+f
+run
+n
+print code
+print code[0]
+print code._M_start
+print code._M_impl._M_start
+print code._M_impl._M_start.linha
+print code._M_impl._M_start.linha.linha
+print code._M_impl._M_start.linha
+print code._M_impl._M_start.linha.tokens
+print code._M_impl._M_start.tokens
+print code._M_impl._M_start.tokens._M_impl._M_start
+print code._M_impl._M_start.tokens._M_impl._M_start.c_str
+print code._M_impl._M_start.tokens._M_impl._M_start.c_str()
+quit
+y
+n
+break passagem_macros
+run
+n
+print it
+run
+y
+n
+print it
+print *it
+print *it._M_impl
+print *it.tokens._M_impl
+print it->tokens._M_impl
+print it->tokens._M_impl[0]
+print it->tokens._M_impl->at(0)
+q
+y
+break passagem_macros
+y
+run
+q
+break passagem_macros(std::vector<linha, std::allocator<linha> >) 
+run
+n
+print it->tokens.size()
+a = it+1
+$a = it+1
+print it
+$3 = it+1
+help
+q
+y
+break passagem_macros(std::vector<linha, std::allocator<linha> >) 
+run
+n
+print a
+print code.size()
+break main
+run
+y
+n
+print line
+n
+print linha_pronta
+print linha_pronta.tokens
+print linha_pronta.tokens._M_impl
+print linha_pronta.tokens._M_impl._M_start
+print linha_pronta.tokens._M_impl._M_start.0
+print linha_pronta.tokens._M_impl._M_start[0x0]
+print linha_pronta.tokens._M_impl._M_start.0x0
+print linha_pronta.tokens._M_impl._M_start
+print linha_pronta.tokens
+print linha_pronta.tokens[0]
+print linha_pronta.tokens
+print code_vector
+print code_vector[0]
+print code_vector.at(0)
+print code_vector
+print *(code_vector._M_impl._M_start)
+n
+print line
+n
+print line
+q
+y
+braek main
+break main
+run
+n
+next
+print tokens
+q
+y
+break main
+run
+n
+print code_vector
+n
+q
+break main
+run
+n
+print buffer
+print \r buffer
+print r buffer
+print code_vector
+q
+y
+braek main
+break main
+run
+b main
+run
+y
+n
+cout << t
+std::cout << t
+ << t
+t
+print t
+print line
+print linha_pronta
+print linha_pronta
+q
+y
+b main
+run
+n
+print buffer
+print line
+n
+print line
+n
+print line
+n
+print line
+n
+print code_vector
+q
+y
+b main
+r
+n
+until
+n
+untl 31
+until 31
+n
+s
+n
+print code_vector
+print code_str
+n
+print *(it._M_IMPL)
+print it
+n
+info break
+del 1
+break 33
+run
+y
+s
+n
+q
+y
+b passagem_macros
+r
+print code
+n
+s
+n
+print m_beg
+print m_end
+reverse-next
+target record
+target record-full
+record stop
+r
+y
+target record-full
+n
+s
+n
+print (*it).tokens
+q
+u
+y
+b passagem_macros
+r
+target record-full
+n
+s
+n
+print new_macro
+reverse-next
+print (*it).tokens
+n
+print (*it).tokens
+y
+n
+r-n
+reverse-n
+reverse-next
+a = std::find((*it).tokens.begin(), (*it).tokens.end(), "END")
+$a = std::find((*it).tokens.begin(), (*it).tokens.end(), "END")
+set $a = std::find((*it).tokens.begin(), (*it).tokens.end(), "END")
+import algorithm
+info sharedlibrary
+q
+y
+b passagem_macros(std::vector<_linha, std::allocator<_linha> >) 
+start
+run
+y
+target record-full
+n
+s
+n
+print aux
+n
+rn
+aux == true
+print aux = true
+print aux == true
+print aux == (*it).tokens.end()
+y
+print (*it).tokens.end()
+print (*it).tokens.start()
+q
+y
+b passagem_macros(std::vector<_linha, std::allocator<_linha> >) 
+run
+n
+s
+n
+until 41
+print macro_body
+n
+q
+y
+break passagem_macros(std::vector<_linha, std::allocator<_linha> >&) 
+run
+n
+print *it
+print (*it).tokens
+print (*it).tokens[0]
+print (*it+1).tokens[0]
+n
+n
+n
+q
+y
+run
+bt
+q
+y
+break MacroTable::has(std::string) 
+run
+n
+print name
+info break
+clear 1
+break passagem_macros(std::vector<_linha, std::allocator<_linha> >&) 
+run
+y
+n
+print code
+n
+print code
+n
+print code
+n
+print code
+s
+q
+y
+b main
+n
+run
+n
+s
+rn
+f
+finish
+b MacroTable::has(std::string) 
+r
+n
+continue
+n
+s
+print name
+n
+up
+print code
+print (*it).tokens
+print (*it).tokens[0]
+print (*it)
+type
+whatis it
+whatis code
+whatis code[0]
+whatis code.at(0)
+print it
+run
+y
+break passagem_macros(std::vector<_linha, std::allocator<_linha> >&) 
+continue
+n
+print code
+n
+print it
+n
+print it
+n
+print it
+n
+print it
+run
+n
+info break
+clear 1
+run
+y
+continue
+print code
+print \r code
+print\r code
+print \rcode
+print /r code
+q
+y
+break passagem_macros(std::vector<_linha, std::allocator<_linha> >&) 
+run
+n
+print it
+run
+y
+n
+print ir
+print it
+n
+s
+print it
+print code
+n
+print it
+n
+print it
+until 41
+print new_macro
+n
+print new_macro
+print it
+print it+1
+n
+print it
+print it+1
+n
+print it
+print code[4]
+template class std::vector<Linha>
+print code
+print it
+n
+print it
+print code
+print it
+*(code._M_start+1)
+*(code._M_start+1)
+code._M_start
+print *(code._M_start+1)
+print /r code
+print *(code._M_impl._M_start+1)
+print *(code._M_impl._M_start)
+print *it
+print it
+print *(code._M_impl._M_start)
+q
+y
+break passagem_macros(std::vector<_linha, std::allocator<_linha> >&) 
+run
+n
+run
+n
+print it
+n
+print it
+n
+n
+print it
+n
+print it
+n
+print code
+print mnt
+print mct
+it = m_beg
+set it = m_beg
+print it
+q
+n
+run
+y
+n
+print it
+print code
+n
+print it
+it = m_beg
+set it = m_beg
+print it
+n
+s
+q
+y
+b passagem_macros(std::vector<_linha, std::allocator<_linha> >&) 
+r
+n
+print aux
+n
+print it
+n
+r
+y
+n
+print it
+n
+s
+n
+print it
+n
+print name
+n
+s
+print it
+n
+un 78
+unt 78
+q
+y
+b passagem_macros(std::vector<_linha, std::allocator<_linha> >&) 
+r
+n
+s
+n
+print macro_body
+n
+print macro_result
+r
+y
+target 
+help target
+target record-full
+n
+s
+n
+print it
+n
+print macro_it
+print macros
+rn
+n
+print macro_it
+n
+print macro_it
+n
+print macro_it.getLabeL()
+print macro_it.getLabe()
+print macro_it.getLabel()
+print (*macro_it).getLabel()
+y
+print macro_name
+q
+y
+b passagem_macros(std::vector<_linha, std::allocator<_linha> >&) 
+r
+n
+code[0]
+print code[0]
+q
+y
+b passagem_macros(std::vector<_linha, std::allocator<_linha> >&) 
+r
+n
+s
+n
+r
+y
+target record-full
+n
+s
+n
+s
+q
+y
+b passagem_macros(std::vector<_linha, std::allocator<_linha> >&) 
+r
+n
+r
+y
+target record-full
+n
+s
+n
+q
+y
+b passagem_macros(std::vector<_linha, std::allocator<_linha> >&) 
+r
+n
+s
+n
+s
+n
+q
+y
+b passagem_macros(std::vector<_linha, std::allocator<_linha> >&) 
+r
+n
+s
+n
+p erros_list
+up
+n
+n
+p erros_list
+n
+continue
+q
+b passagem_macros(std::vector<_linha, std::allocator<_linha> >&) 
+r
+q
+y
+b PARSER::run_macros(std::vector<_linha, std::allocator<_linha> >) 
+r teste -m
+q
+y
+b PARSER::passagem_macros(std::vector<_linha, std::allocator<_linha> >) 
+run teste -m
+n
+s
+fi
+fini
+s
+n
+print it
+print code.end()
+print code
+n
+print it
+return
+n
+n
+finis
+print m_end
+n
+print m_end
+print code.end()
+n
+q
+y
+b PARSER::passagem_macros(std::vector<_linha, std::allocator<_linha> >) 
+r teste -m
+n
+s
+finis
+s
+n
+print error
+print code
+let $a = [1,2,3]
+set $a = [1,2,3]
+q
+y
+b PARSER::passagem_macros(std::vector<_linha, std::allocator<_linha> >) 
+r
+r teste -m
+y
+n
+s
+finis
+s
+n
+until 52
+n
+print new_macro
+n
+print it
+n
+print i_end
+n
+r teste -m
+target record-full
+n
+s
+finis
+n
+rn
+s
+finis
+s
+n
+until 52
+n
+print it
+n
+print code.begin()
+y
+print (code.begin() - it)
+set $a = code.begin()
+print ($a - it)
+print $a
+print /r $a
+print /r it
+print it._M_current
+print $a._M_current - it._M_current
+q
+y
+b PARSER::passagem_macros(std::vector<_linha, std::allocator<_linha> >) 
+r teste -m
+n
+s
+finis
+s
+n
+print it
+print code
+n
+print code
+print \r code
+print /r code
+print /r it
+print /r _code
+print _code._M_imp._M_start - it._M_current
+print _code._M_impl._M_start - it._M_current
+print code._M_impl._M_start - it._M_current
+print it - code.begin()
+print it - _code.begin()
+print (it - code.begin())
+q
+n
+kill
+y
+q
+b PARSER::passagem_macros(std::vector<_linha, std::allocator<_linha> >) 
+b teste -r
+n
+r teste -r
+r teste -m
+n
+s
+finis
+s
+n
+print new_macro
+print _code.begin()
+print \r _code.begin()
+print /r _code.begin()
+print /r it
+fini
+n
+print i_end
+n
+target record-full
+n
+rn
+where
+q
+n
+kill
+y
+q
+b PARSER::passagem_macros(std::vector<_linha, std::allocator<_linha> >) 
+r teste -m
+n
+print m_end
+print _end
+print i_end
+q
+y
+b PARSER::run_macros(std::vector<_linha, std::allocator<_linha> >) 
+r teste -r
+r teste -m
+n
+q
+b PARSER::run_macros(std::vector<_linha, std::allocator<_linha> >) 
+r teste -m
+n
+print PARSER::erros_list 
+info break
+delete 1
+b MacroTable::create_macro(__gnu_cxx::__normal_iterator<_linha*, std::vector<_linha, std::allocator<_linha> > >&, std::vector<_linha, std::allocator<_linha> >&, std::vector<_erro, std::allocator<_erro> >&) 
+r teste -m
+y
+n
+print erros_list 
+n
+print erros_list 
+n
+until 310
+n
+print PARSER::erros_list 
+q
+y
+b 542
+n
+b PARSER::passagiunics(std::vector<_linha, std::allocator<_linha> >) 
+r -o Input/single_pass
+until 542
+n
+p ok
+n
+print sum_list[i]
+print simb_list
+kill
+y
+q
+b PARSER::passagiunics(std::vector<_linha, std::allocator<_linha> >) 
+r -o Input/single_pass
+until 542
+target record-full
+n
+print sum_list
+n
+print valor_const 
+simb_list.begin() + 1
+print simb_list.begin() + 1
+print simb_list._M_Impl_._M_begin + 1
+print simb_list._M_begin + 1
+print /r simb_list
+print simb_list._M_Impl_._M_start + 1
+print simb_list._M_start + 1
+print simb_list._M_impl_._M_start + 1
+print simb_list._M_impl._M_start + 1
+print (simb_list._M_impl._M_start + 1)->value
+obj_code[21]
+print obj_code[21]
+print obj_code
+kill
+y
+q
+b PARSER::passagiunics(std::vector<_linha, std::allocator<_linha> >) 
+r -o Input/single_pass
+n
+print linha
+n
+print increment_add 
+print token
+n
+print pc
+print PC
+n
+n
+print PC
+n
+print token
+n
+print increment_add 
+n
+print PC
+n
+print PC
+q
+y
+q
+run
+where
+bt
+print _start
+q
+y
+b parser.cpp:502
+run -o Input/single_pass
+print linha
+n
+print line_size
+print rinst.qtd_operandos
+n
+print line_size
+n
+k
+y
+q
+b PARSER::passagiunics(std::vector<_linha, std::allocator<_linha> >) 
+r -o Input/single_pass
+n
+print linha
+b 392
+continue
+r -o Input/single_pass
+n
+until 392
+n
+r -o Input/single_pass
+y
+n
+print linha
+next
+print linha
+next
+print linha
+next
+print linha
+next
+print erros_list
+n
+n
+print i
+n
+print simb_list
+n
+print linha
+n
+p linha
+b if space_found = true
+b if space_found == true
+info break
+delete 3
+delete 1
+delete 2
+info break
+c
+print linha
+print space_found 
+n
+print linha
+print simb_list
+print simb_list[0]
+n
+print linha
+n
+print linha
+n
+print linha
+b 603
+c
+c
+print linha
+print simb_list
+n
+u 609
+n
+print simb_list[i]
+n
+target record-full
+u 622
+rn
+print simb_listí[i]
+print simb_listí[i]
+print simb_listí
+print simb_list
+print simb_list[0]
+y
+rn
+rn
+rn
+print simb_list[0]
+y
+rn
+print simb_list[i].value
+y
+n
+print j
+rn
+print j
+k
+y
+q
+b PARSER::passagiunics(std::vector<_linha, std::allocator<_linha> >) 
+r -o Input/single_pass
+b 419
+info break
+ignore 2 8
+c
+print linha
+n
+print token
+n
+k
+y
+q
+b parser.cpp:691
+r -o Input/single_pass
+delete 1
+b parser.cpp:690
+r -o Input/single_pass
+print linha
+print token
+print simb_list[i].lista_mem_changer
+print simb_listí[i]
+print simb_listt[i]
+print simb_list[i]
+print simb_list[i-1]
+print simb_list[i+1]
+k
+y
+q
+b PARSER::passagiunics(std::vector<_linha, std::allocator<_linha> >) 
+r
+r -o Input/single_pass
+b 649
+c
+print linha
+c
+print linha
+c
+print linha
+n
+k
+y
+q
+q

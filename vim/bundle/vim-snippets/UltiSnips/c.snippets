@@ -44,6 +44,15 @@ int main(int argc, char *argv[]) {
 }
 endsnippet
 
+snippet sw "switch case"
+switch(${1:var}) {
+	case ${2:val}:
+		break;
+	default:
+		break;
+}
+endsnippet
+
 snippet for "for loop (for)"
 for (${2:i} = 0; $2 < ${1:count}; ${3:$2++}) {
 	${VISUAL}${0}

@@ -1,0 +1,2 @@
+set autosourcereload
+highlight SelectedLineNr cterm=reverse ctermfg=White ctermbg=Black

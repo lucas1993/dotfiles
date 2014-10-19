@@ -3,26 +3,22 @@ if &cp | set nocp | endif
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd /data/code/sb
+cd /data/code/sb/SB_TRAB1
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +8 macros.cpp
-badd +44 MacroTable.cpp
-badd +9 MacroTable.h
-badd +16 SB_TRAB1/Macro.h
-badd +3 SB_TRAB1/Macro.cpp
-badd +51 SB_TRAB1/defines.cpp
-args macros.cpp MacroTable.cpp MacroTable.h
-edit MacroTable.cpp
+badd +387 parser.cpp
+badd +3 Makefile
+badd +1 README.md
+silent! argdel *
+edit README.md
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
 wincmd t
 set winheight=1 winwidth=1
 argglobal
-edit MacroTable.cpp
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -32,13 +28,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal nofen
 silent! normal! zE
-let s:l = 44 - ((21 * winheight(0) + 21) / 43)
+let s:l = 1 - ((0 * winheight(0) + 21) / 43)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-44
-normal! 018|
-lcd /data/code/sb
+1
+normal! 0
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

@@ -14,9 +14,9 @@ badd +186 application/modules/painel/forms/Classificado.php
 badd +172 application/modules/painel/controllers/DocumentosController.php
 badd +247 application/models/GerenciamentoDocumentos.php
 badd +137 library/App/Diversos/Sistema.php
-badd +272 public/admin/css/painel.css
+badd +270 public/admin/css/painel.css
 silent! argdel *
-edit public/admin/css/painel.css
+edit application/models/SocialClassificados.php
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -32,12 +32,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal nofen
 silent! normal! zE
-let s:l = 270 - ((19 * winheight(0) + 21) / 43)
+let s:l = 229 - ((27 * winheight(0) + 21) / 43)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-270
-normal! 020|
+229
+normal! 087|
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
