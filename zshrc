@@ -100,13 +100,13 @@ fi
 
 # Prompt always on bottom
 precmd() {
-	echo -en "\033[46;0f"
+	echo -en "\033[50;0f"
 }
 
 # Prompt on bottom after ^L
 cls() {
 	clear
-	echo -en "\033[46;0f"
+	echo -en "\033[50;0f"
 	zle reset-prompt
 }
 zle -N cls
@@ -121,7 +121,17 @@ export LESS="--RAW-CONTROL-CHARS"
 [[ -f ~/.less_termcap ]] && . ~/.less_termcap
 
 [[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
-alias -g dgest='~/www/dottus/gestao'
+
+man() {
+    env LESS_TERMCAP_mb=$'\E[01;31m' \
+    LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+    LESS_TERMCAP_me=$'\E[0m' \
+    LESS_TERMCAP_se=$'\E[0m' \
+    LESS_TERMCAP_so=$'\E[38;5;246m' \
+    LESS_TERMCAP_ue=$'\E[0m' \
+    LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+    man "$@"
+}
 
 fancy-ctrl-z () {
   if [[ $#BUFFER -eq 0 ]]; then
