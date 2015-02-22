@@ -16,6 +16,8 @@ syntax on
 
 set ttyfast
 
+set completeopt=menu
+
 let php_sql_query=1
 let php_htmlInStrings=1
 
@@ -190,6 +192,8 @@ let g:pymode_folding = 1
 let g:pymode_run = 0
 let g:pymode_breakpoint_bind = '<leader>k'
 let g:pymode_lint = 0
+let g:pymode_doc = 0
+let g:pymode_rope_complete_on_dot = 0
 
 "Ultisnips
 

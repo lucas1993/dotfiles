@@ -1000,3 +1000,876 @@ k
 y
 q
 q
+b main
+r -o Input/single_pass
+n
+print mem_wrapper
+print mem_wrapper->code_impl
+print ((*text_code_wrapper) mem_wrapper)->code_impl
+print ((*text_code_wrapper) mem_wrapper).code_impl
+print ((*text_code_wrapper) mem_wrapper)
+print ((*text_code_wrapper)mem_wrapper)
+n
+s
+fini
+n
+n
+print memoriaLOCAL 
+print memoriaLOCAL.size
+print memoriaLOCAL.size()
+fini
+n
+s
+fini
+s
+n
+print obj_codeLOCAL.size()
+k
+y
+q
+r -o Input/single_pass
+where
+r -o Input/single_pass
+where
+k
+y
+q
+r -o Input/single_pass
+b parser.cpp:362
+info
+display it
+r -o Input/single_pass
+y
+display it
+c
+r -o Input/single_pass
+y
+display it
+c
+undisplay 2
+c
+r -o Input/single_pass
+y
+c
+n
+n
+print section
+n
+r -o Input/single_pass
+y
+display m_beg
+c
+n
+print m_end
+r -o Input/single_pass
+y
+info break
+delete 1
+b MacroTable::create_macro(__gnu_cxx::__normal_iterator<_linha*, std::vector<_linha, std::allocator<_linha> > >&, std::vector<_linha, std::allocator<_linha> >&, std::vector<_erro, std::allocator<_erro> >&) 
+c
+n
+print it
+n
+print name
+n
+n
+print it
+display it
+n
+print new_macro
+n
+print it
+n
+print m_end
+n
+print code
+print it
+print aux
+k
+y
+q
+b PARSER::passagem_unica(std::vector<_linha, std::allocator<_linha> >) 
+r -o teste
+n
+print linha
+display token
+n
+print linha
+print erros
+print erros_list
+n
+k
+y
+q
+q
+b PARSER::passagem_unica(std::vector<_linha, std::allocator<_linha> >) 
+r -o teste
+display token
+n
+undisplay 1
+display *token
+n
+r -o teste
+y
+b 601
+c
+c
+s
+fini
+s
+n
+k
+y
+q
+b PARSER::passagem_macros(std::vector<_linha, std::allocator<_linha> >) 
+r -o loko
+n
+display *it
+n
+n
+r -o loko
+y
+n
+r -o loko
+y
+n
+k
+y
+q
+b PRINT_L 
+r
+5
+5
+delete 1
+info break
+r
+y
+5
+q
+y
+r
+5
+q
+y
+b MacroTable
+n
+b MacroTable::create_macro
+r -m input/teste_macro.asm
+n
+r
+b main
+r
+r -m input/teste_macro.asm
+y
+n
+n
+s
+fi
+fin
+s
+n
+r -m input/teste_macro.asm
+y
+target record-full
+n
+s
+fi
+fini
+s
+quit
+y
+r -m input/teste_macro
+r -m input/teste_macro.asm
+b main
+r -m input/teste_macro.asm
+n
+r -m input/teste_macro.asm
+y
+n
+s
+fini
+s
+n
+s
+fini
+s
+fini
+s
+fini
+s
+n
+print it
+k
+y
+q
+r -m input/teste_macro
+b main
+r -m input/teste_macro
+n
+r -m input/teste_macro
+y
+n
+s
+fini
+s
+n
+s
+fini
+s
+n
+r -m input/teste_macro
+y
+n
+s
+fini
+s
+n
+s
+fini
+s
+n
+s
+fini
+s
+n
+print it
+n
+print it
+quit
+y
+b main
+r
+n
+s
+n
+print new_code
+print rinst
+print rinst->name
+print PARSER::translation
+quit
+y
+b main
+r
+bt
+where
+b main
+r
+y
+n
+s
+n
+print PARSER::translate
+print PARSER::translation
+s
+n
+print new_code
+n
+target record-full
+n
+rn
+print arg_it
+print new_code
+n
+rn
+rn
+rn
+n
+rn
+rn
+print arg_it
+k
+u
+y
+q
+b PARSER::run_montador(std::vector<_linha, std::allocator<_linha> >) 
+r
+n
+print code
+r
+y
+print code
+delete 1
+b main
+r
+y
+n
+print my_mem
+s
+fini
+s
+n
+s
+fini
+s
+n
+fini
+quit
+k
+y
+q
+b PARSER::passagem_unica(std::vector<_linha, std::allocator<_linha> >) 
+r
+n
+print code
+n
+k
+y
+k
+q
+b PARSER::passagem_unica(std::vector<_linha, std::allocator<_linha> >) 
+r
+n
+print token
+b PARSER::isinst
+r
+y
+c
+print rinst
+print *rinst
+print _inst
+delete 1
+info break
+delete 2
+watch rinst
+r
+y
+b PARSER::passagem_unica(std::vector<_linha, std::allocator<_linha> >) 
+display *rinst
+display rinst
+r
+y
+display *rinst
+display rinst
+n
+display
+remove rinst
+delete rinst
+k
+y
+q
+b PARSER::passagem_unica(std::vector<_linha, std::allocator<_linha> >) 
+r
+display rinst
+n
+r
+y
+b PARSER::isinst(std::string, _inst*) 
+c
+n
+print inst_cur
+n
+k
+y
+q
+b PARSER::passagem_unica(std::vector<_linha, std::allocator<_linha> >) 
+r
+target record-full
+n
+s
+fini
+s
+n
+print inst
+n
+print _inst
+print rinst
+n
+print achei
+fini
+n
+print rinst
+n
+r
+c
+r
+y
+n
+b isinst
+n
+b PARSER::isinst
+c
+print rinst
+n
+print inst_cur
+n
+print rinst
+n
+print *rinst
+print rinst
+r
+y
+c
+n
+print rinst
+n
+fini
+print rinst
+n
+print rinst
+k
+y
+q
+b PARSER::passagem_unica(std::vector<_linha, std::allocator<_linha> >) 
+display *rinst
+r
+display *rinst
+n
+undisplay *rinst
+undisplay 
+y
+n
+display *rinst
+n
+print instrucoes
+r
+y
+c 383
+n
+r
+b PARSER::passagem_unica(std::vector<_linha, std::allocator<_linha> >) 
+n
+r
+n
+display instrucoes
+n
+k
+y
+q
+b PARSER::passagem_unica(std::vector<_linha, std::allocator<_linha> >) 
+r
+k
+y
+q
+b PARSER::passagem_unica(std::vector<_linha, std::allocator<_linha> >) 
+r
+n
+display linha
+n
+print token
+undisplay 1
+display token
+n
+print text_ia32
+k
+y
+q
+b PARSER::passagem_unica(std::vector<_linha, std::allocator<_linha> >) 
+r
+display token
+n
+undisplay 1
+display *token
+n
+k
+y
+q
+b parser.cpp::_str
+n
+b parser::_str
+n
+b parser.cpp::2
+n
+b parser.cpp:2
+delete 1
+b parser.cpp:_str
+n
+b main
+r to_binary.asm 
+n
+s
+fini
+s
+n
+s
+fini
+s
+b 563
+c
+target record-full
+n
+print it
+k
+y
+q
+b parser.cpp:573
+r to_binary.asm 
+n
+r to_binary.asm 
+y
+print space_code
+print it
+print sp_it
+display sp_it
+n
+print it
+n
+k
+y
+q
+r
+bt
+quit
+y
+b tree.hpp:95
+n
+b main
+r
+n
+quit
+y
+k
+y
+q
+r
+bt
+quit
+y
+r
+bt
+quit
+yy
+r
+bt
+quit
+y
+b main
+b podar<int>(bool, int, Tree_Node<int>*) 
+r
+c
+target record-full
+c
+rn
+rfini
+rs
+rn
+print it
+rn
+print it
+print node
+print node ->data
+print node->children
+print node->children.first()
+print node->children.front()
+y
+print *(node->children.front())
+quit
+y
+b podar
+n
+r
+b podar
+n
+b podar<int>(bool, int, Tree_Node<int>*) 
+r
+y
+display val
+undisplay val
+undisplay 1
+display *node
+c
+n
+target record-full
+n
+undisplay 1
+undisplay 2
+display *node
+n
+fini
+n
+display it
+n
+print *it
+info display
+undisplay 3
+display *node
+undisplay 4
+display **it
+n
+quit
+j
+rn
+k
+y
+q
+b podar<int>(bool, int, Tree_Node<int>*) 
+r
+display *node
+c
+n
+display **it
+n
+fini
+n
+k
+y
+q
+b podar<int>(bool, int, Tree_Node<int>*) 
+r
+display *node
+c
+n
+fini
+n
+display **it
+n
+print *(0x60f3e0)
+print (*it)->children
+print *(0x60f590)
+print (*(0x60f3e0)).data
+print *(0x60f590)
+k
+y
+undisplay 1
+b main
+r
+n
+u 30
+n
+s
+fini
+s
+target record-full
+n
+display *cur
+undisplay 2
+display cur
+n
+undisplay 4
+n
+print aux
+n
+print aux
+display aux
+n
+print *aux
+n
+undisplay 5
+display *aux
+n
+print *it
+n
+n
+fini
+n
+s
+n
+s
+fini
+s
+n
+s
+fini
+s
+n
+s
+fini
+s
+n
+s
+fini
+s
+k
+y
+q
+b podar<int>(bool, int, Tree_Node<int>*) 
+r
+display *node
+c
+n
+fini
+n
+display **it
+n
+n
+rn
+k
+y
+r
+c
+n
+print it
+print \r it
+print /r it
+m
+n
+print /r it
+print  /r *it
+print   *it
+print  *(it + 1)
+print  *(it._M_node + 1)
+print  *(it._M_node + 1)
+print  (*(*(it._M_node + 1)))._M_node
+print  *(*(it._M_node + 1))._M_node
+print  (*(it._M_node + 1))._M_node
+print  (*(it._M_node + 1))
+print  (*(it._M_node + 1))._M_next
+print *( (*(it._M_node + 1))._M_next)
+print  (*(0x60f560))
+print it
+print **it
+n
+fini
+n
+n
+print \r *it
+print /r *it
+print (*(0x60f5c0))
+type
+typename
+ptype it
+ptype 
+ptype (*(0x60f5c0))
+ptype ((0x60f5c0))
+print /r *it
+print  *it
+print  it
+print /r it
+n
+print node->chidlren
+print node->children
+k
+y
+q
+b podar<int>(bool, int, Tree_Node<int>*) 
+r
+c
+display *node
+c
+n
+fini
+n
+display **it
+n
+k
+y
+q
+b podar<int>(bool, int, Tree_Node<int>*) 
+r
+c
+display *node
+c
+n
+display **it
+n
+fini
+n
+quit
+y
+b podar<int>(bool, int, Tree_Node<int>*) 
+r
+print *node
+c
+display *node
+c
+n
+fini
+n
+display **it
+n
+print node->children[0]
+print node->children
+n
+c
+bt
+print *(0x60f590)
+r
+y
+c
+fini
+c
+r
+y
+c
+fini
+n
+target record-full
+n
+print it
+print **it
+rn
+rn
+rn
+print **it
+y
+print *it
+k
+y
+q
+r
+r
+y
+k
+y
+q
+b loop_fp<int>(int, Tree_Node<int>*, std::vector<int, std::allocator<int> > const&)
+r
+c
+bt
+quit
+y
+r
+br
+bt
+k
+y
+q
+r
+bt
+q
+y
+r items.db 2 4
+k
+y
+q
+r items.db 2 4
+print src_kid
+k
+y
+q
+b rebuild_fptree<int>(int, std::list<Tree_Node<int>*, std::allocator<Tree_Node<int>*> >*) 
+r items.db 2 4
+print supp
+print header
+print *header
+n
+print ord
+print Tree_Node<int>::m_ordered
+k
+y
+q
+b rebuild_fptree<int>(int, std::list<Tree_Node<int>*, std::allocator<Tree_Node<int>*> >*) 
+r items.db 2 4
+k
+y
+q
+b main
+r items.db 2 4
+n
+fini
+n
+n
+fini
+n
+n
+u 58
+u67
+u 67
+n
+print sub_trees[0]
+print *(sub_trees[0])
+print *(sub_trees[0]).children
+print (*(sub_trees[0])).children
+print (*(sub_trees[0])).children->data
+print (*(sub_trees[0])).children.first()->data
+print (*(sub_trees[0])).children.begin()->data
+print (*(sub_trees[0])).children
+print ((*(sub_trees[0])).children)[0]
+print *(0x60fbb0)
+print *(0x60fcd0)
+print tr_table
+n
+br
+bt
+k
+y
+q

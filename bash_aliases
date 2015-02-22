@@ -1,6 +1,7 @@
 alias :q="exit" 
 alias gtags="ctags --fields=+l -R -f ./.tags"
 alias install="sudo apt-get install "
+alias uninstall="sudo apt-get remove "
 alias update="sudo apt-get update "
 alias op='xdg-open '
 alias py3='python3 '

@@ -3,16 +3,16 @@ if &cp | set nocp | endif
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd /data/code/sb/SB_TRAB1
+cd /data/code/tst_os
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +387 parser.cpp
-badd +3 Makefile
-badd +1 README.md
-silent! argdel *
-edit README.md
+badd +34 boot.s
+badd +80 kernel.c
+badd +27 linker.ld
+args boot.s
+edit linker.ld
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -28,12 +28,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal nofen
 silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 21) / 43)
+let s:l = 26 - ((25 * winheight(0) + 21) / 43)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+26
+normal! 08|
+lcd /data/code/tst_os
 tabnext 1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
