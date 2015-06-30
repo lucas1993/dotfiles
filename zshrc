@@ -148,3 +148,5 @@ bindkey '^Z' fancy-ctrl-z
 clear
 
 export PATH="$HOME/opt/cross/bin:$PATH"
+
+eval "$(rbenv init -)"

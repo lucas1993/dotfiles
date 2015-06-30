@@ -2,11 +2,10 @@
 "ctrlp.vim  nerdcommenter nerdtree  vim-airline+(tmuxline)  vim-exchange
 "vim-startify  vim-surround ultisnips vim-easymotion gundo vimux 
 "vim-dispatch cammelcasemotion vim-fugitive tabular vim-autoclose syntastic
-"vim-visual-star-search
+"vim-visual-star-search vim-instant-markdown
 
 
 "================================================== Config
-
 set number
 
 set tags=./.tags
@@ -78,15 +77,19 @@ set wildmenu
 set wildmode=list:longest,full
 set wildignore=*.o,*~,*.pyc,*.pyo,*.so,*.sw*,__pycache__
 
+if filereadable('.vimrc.local')
+	source .vimrc.local
+endif
+
 "================================================== Mappings
 
 noremap <C-´> <Esc>
 
 nnoremap <C-\> i//<Esc>
 
-map q: :q
-map :Q :q
-map :Wq :wq
+"map q: :q
+"map :Q :q
+"map :Wq :wq
 
 nnoremap gi gi<Esc>
 nnoremap gl `.
@@ -100,6 +103,7 @@ inoremap <C-H> <Left>
 inoremap <C-L> <Right>
 inoremap <C-K> <Up>
 inoremap <C-J> <Down>
+inoremap <C-BS> <C-W>  
 
 inoremap <Nul> <Space>
 
@@ -185,9 +189,12 @@ vmap <Leader>p "+p
 vmap <Leader>P "+P
 
 "================================================== Plugin config
+"Markdown
+let g:instant_markdown_autostart = 0
+let g:instant_markdown_slow = 1
 
 "Pymode
-let g:pymode_indent = 1
+"let g:pymode_indent = 1
 let g:pymode_folding = 1
 let g:pymode_run = 0
 let g:pymode_breakpoint_bind = '<leader>k'
@@ -263,6 +270,10 @@ let g:startify_custom_header = [
                 \ ]
 
 let g:startify_session_savevars = ['g:startify_session_savecmds']
+
+"let g:startify_session_savecmds = ['let b:syntastic_c_cflags ="-Ikernel/include"']
+
+let g:syntastic_cpp_config_file = '.syntastic_config'
 
 "let g:startify_session_savecmds = [
 	   "\ 'silent setglobal fileencoding=latin1',
