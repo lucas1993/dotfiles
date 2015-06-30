@@ -190,6 +190,7 @@ vmap <Leader>P "+P
 
 "================================================== Plugin config
 "Markdown
+"Olhar o git pra instalar o npm!
 let g:instant_markdown_autostart = 0
 let g:instant_markdown_slow = 1
 
