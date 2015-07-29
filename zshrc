@@ -51,7 +51,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/amaral/.cabal/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -94,8 +94,8 @@ bindkey '^r' history-incremental-search-backward
 export KEYTIMEOUT=1
 
 
-if [[ ! $TERM =~ screen ]]; then
-	exec tmux -2 new-session -A -s tmux
+if [[ ! ($TERM =~ screen || $TERM =~ screen-256color) ]]; then
+	#exec tmux -2 new-session -A -s tmux
 fi
 
 # Prompt always on bottom
@@ -150,3 +150,17 @@ clear
 export PATH="$HOME/opt/cross/bin:$PATH"
 
 eval "$(rbenv init -)"
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+export TERM=screen-256color
+export NVIM_LISTEN_ADDRESS=/tmp/nvim nvim
+
+export PATH="$HOME/.linuxbrew/bin:$PATH"
+export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+
+export NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+# Não esquecer de adicionar o tmux na execução do terminal principal!
+# "tmux -2 new-session -s tmux"
