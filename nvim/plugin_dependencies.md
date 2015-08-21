@@ -1,3 +1,11 @@
+Coq
+===
+
+coquille.vim
+- vimbufsync
+- Coq
+
+
 Haskell
 =======
 
@@ -10,6 +18,7 @@ ghcmod-vim
 
 vimproc.vim
 - make
+
 
 Markdown
 ========
@@ -42,3 +51,12 @@ nvimex.py
 
 neoterm
 - Neovim
+
+Agenda
+======
+
+vim-orgmode
+- Universal Text Linking (utl.vim)
+- vim-repeat
+- vim-speedating
+- calendar.vim

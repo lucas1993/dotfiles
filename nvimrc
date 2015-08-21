@@ -1,4 +1,4 @@
-""""" Plugins instalados (Check requirements)
+"""" Plugins instalados (Check requirements)
 "ctrlp.vim  nerdcommenter nerdtree  vim-airline+(tmuxline)  vim-exchange
 "vim-startify  vim-surround ultisnips vim-easymotion gundo vimux 
 "vim-dispatch cammelcasemotion vim-fugitive tabular vim-autoclose syntastic
@@ -37,7 +37,7 @@ highlight Pmenu ctermbg=238 gui=bold
 set t_Co=256
 
 "Mouse da vergonha
-"set mouse=a
+set mouse=
 
 set hidden
 set laststatus=2
@@ -50,6 +50,7 @@ set scrolloff=2
 set background=dark "light colors
 set tabstop=4  "tab = 4 chars
 set shiftwidth=4 "Auto-indent tab = 4 chars
+set expandtab
 set virtualedit=onemore "Go one past last character in line
 set virtualedit+=block " Free V-Block
 filetype indent on 
@@ -86,8 +87,12 @@ endif
 
 "================================================== Mappings
 
-tnoremap <Esc> <C-\><C-n>
-tnoremap <C-[> <C-\><C-n>
+if has("nvim")
+    tnoremap <Esc> <C-\><C-n>
+    tnoremap <C-[> <C-\><C-n>
+else
+    :colorscheme kolor
+endif
 
 
 noremap <C-´> <Esc>
@@ -111,6 +116,11 @@ inoremap <C-L> <Right>
 inoremap <C-K> <Up>
 inoremap <C-J> <Down>
 inoremap <C-BS> <C-W>  
+
+nnoremap <Up> <nop>
+nnoremap <Down> <nop>
+nnoremap <Right> <nop>
+nnoremap <Left> <nop>
 
 if has("nvim")
 	tnoremap <C-h> <C-\><C-n><C-w>h
@@ -207,6 +217,7 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
+
 "================================================== Plugin config
 "Markdown
 "Olhar o git pra instalar o npm!
@@ -274,7 +285,7 @@ let g:startify_list_order = [
 			\ ['===> Bookmarks'], 'bookmarks',
 			\ ['===> Recent Files'], 'files', 
 			\ ['===> Directory'], 'dir' ]
-let g:startify_bookmarks = [ '~/.nvimrc',  '~/.zshrc', '~/code' ]
+let g:startify_bookmarks = [ '~/.nvimrc',  '~/.zshrc', '~/.agenda.org', '~/code' ]
 
 let g:startify_custom_header = [
                 \ '   __      ___            ______ 	 ',
@@ -302,16 +313,54 @@ let g:neomake_warning_sign = {
             \ 'texthl': 'MyWarningMsg',
             \ }
 
-"let g:startify_session_savecmds = ['let b:syntastic_c_cflags ="-Ikernel/include"']
-let g:syntastic_cpp_config_file = '.syntastic_config'
-
-"let g:startify_session_savecmds = [
-	   "\ 'silent setglobal fileencoding=latin1',
-	   "\ 'set fileencodings=latin1,ucs-bom,utf-8'
-	   "\]
-
 """ Neoterm
 let g:neoterm_position = 'vertical'
 let g:neoterm_automap_keys = ''
 let g:neoterm_keep_term_open = 0
 
+
+""" Quickscope
+
+function! Quick_scope_selective(movement)
+    let needs_disabling = 0
+    if !g:qs_enable
+        QuickScopeToggle
+        redraw
+        let needs_disabling = 1
+    endif
+
+    let letter = nr2char(getchar())
+
+    if needs_disabling
+        QuickScopeToggle
+    endif
+
+    return a:movement . letter
+endfunction
+
+let g:qs_enable = 0
+
+nnoremap <expr> <silent> f Quick_scope_selective('f')
+nnoremap <expr> <silent> F Quick_scope_selective('F')
+nnoremap <expr> <silent> t Quick_scope_selective('t')
+nnoremap <expr> <silent> T Quick_scope_selective('T')
+vnoremap <expr> <silent> f Quick_scope_selective('f')
+vnoremap <expr> <silent> F Quick_scope_selective('F')
+vnoremap <expr> <silent> t Quick_scope_selective('t')
+vnoremap <expr> <silent> T Quick_scope_selective('T')
+
+
+""" Zealvim
+
+let g:zv_added_files_type = {
+    \ 'hs': 'Haskell',
+    \ }
+
+""" Coquille
+
+let g:coquille_auto_move = "true"
+
+
+""" vim-orgmode
+
+let g:org_agenda_files = ['~/.agenda.org']

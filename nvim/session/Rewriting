@@ -1,19 +1,22 @@
 let SessionLoad = 1
-if &cp | set nocp | endif
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/code/pibic/UnificationApp
+cd ~/code/pibic/RegexInclusion
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +14 TODO.md
-badd +16 app/controllers/pages_controller.rb
-badd +13 config/routes.rb
+badd +7 RewriteSystem.hs
+badd +21 Main.hs
+badd +3 Unfold.hs
+badd +21 Deriv.hs
+badd +9 TermTypes.hs
+badd +45 Substitution.hs
 argglobal
 silent! argdel *
-edit app/controllers/pages_controller.rb
+argadd RewriteSystem.hs
+edit TermTypes.hs
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -29,15 +32,15 @@ setlocal fml=1
 setlocal fdn=20
 setlocal nofen
 silent! normal! zE
-let s:l = 15 - ((14 * winheight(0) + 23) / 47)
+let s:l = 9 - ((8 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-15
+9
 normal! 0
-lcd ~/code/pibic/UnificationApp
+lcd ~/code/pibic/RegexInclusion
 tabnext 1
-if exists('s:wipebuf')
+if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
