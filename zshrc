@@ -112,7 +112,7 @@ cls() {
 zle -N cls
 bindkey '^L' cls
 
-export EDITOR=vim
+export EDITOR=nvim
 unset GNOME_KEYRING_CONTROL
 
 # Get color support for 'less'

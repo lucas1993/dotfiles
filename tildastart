@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rm -f /home/amaral/.config/tilda/config_*
+cp /home/amaral/.dotfiles/tilda_config /home/amaral/.config/tilda/config_0
+tilda

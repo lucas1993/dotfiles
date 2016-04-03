@@ -288,7 +288,11 @@ class Orgnode(object):
         """
         Set the deadline (due) date using the supplied date object
         """
-        self.deadline = dateval
+        if self.deadline.__str__() != '' and dateval.__str__() != '' and dateval <= self.deadline:
+            self.deadline = dateval
+        elif self.deadline.__str__() == '':
+            self.deadline = dateval
+
 
     def Deadline(self):
         """

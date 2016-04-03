@@ -3,17 +3,18 @@
 
 import Orgnode, datetime, os, time
 
-today = datetime.date.today()
-tomorrow = datetime.timedelta(days=1)
+delta = datetime.date.today() + datetime.timedelta(days=5)
 
 filename = "/home/amaral/.agenda.org"
 nodelist = Orgnode.makelist(filename)
+
+#print nodelist
 
 
 warn_list = []
 
 for n in nodelist:
-    if n.Deadline() == today or n.Deadline() == tomorrow:
+    if n.Deadline().__str__() != '' and n.Deadline() <= delta:
         head = n.Heading()
         warn_list.append(head)
 
@@ -28,5 +29,6 @@ if len(warn_string) > 0:
 
 cmd = "notify-send " + title + " " + "\'" + warn_string + "\'"
 print cmd
-time.sleep(5)
-os.system(cmd)
+if len(warn_string) > 0 :
+    time.sleep(5)
+    os.system(cmd)

@@ -39,6 +39,9 @@ vimux
 neomake
 - Neovim
 
+ctrlp-funky
+- CtrlP
+
 vim-airline
 - Fonte compatível (https://github.com/powerline/fonts)
 

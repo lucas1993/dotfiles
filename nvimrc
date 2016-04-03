@@ -27,7 +27,9 @@ let php_htmlInStrings=1
 autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
 autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 
-autocmd BufWrite * exe ":Neomake"
+if has("nvim")
+    autocmd BufWrite * exe ":Neomake"
+endif
 
 set nofoldenable
 
@@ -70,13 +72,6 @@ silent !stty -ixon > /dev/null 2>/dev/null
 colorscheme solid
 set whichwrap+=<,>,h,l,[,]
 
-if has("persistent_undo")
-    set undodir=~/.nvim/undodir
-    set undofile
-	set undolevels=1000 "maximum number of changes that can be undone
-	set undoreload=10000 "maximum number lines to save for undo on a buffer reload
-endif
-
 set wildmenu
 set wildmode=list:longest,full
 set wildignore=*.o,*~,*.pyc,*.pyo,*.so,*.sw*,__pycache__
@@ -115,7 +110,8 @@ inoremap <C-H> <Left>
 inoremap <C-L> <Right>
 inoremap <C-K> <Up>
 inoremap <C-J> <Down>
-inoremap <C-BS> <C-W>  
+inoremap <C-E> <C-O>w
+inoremap <C-B> <C-O>b
 
 nnoremap <Up> <nop>
 nnoremap <Down> <nop>
@@ -193,12 +189,12 @@ nnoremap <silent> <Leader>\ :noh<CR>
 :nnoremap \| i<CR><ESC>
 
 "Paste without overlapping previous yank
-vnoremap p "_dP
+"vnoremap p "_dP
 "Delete without overlapping previous yank
-nnoremap D "_d
-vnoremap D "_d
+"nnoremap D "_d
+"vnoremap D "_d
+"nnoremap c "_c
 nnoremap x "_x
-nnoremap c "_c
 
 command! -nargs=0 TB call ToggleBackground()
 function! ToggleBackground()
@@ -211,6 +207,7 @@ endfunction
 nnoremap <F3> :TB<CR>
 
 vmap <Leader>y "+y
+nnoremap <Leader>y "+y
 vmap <Leader>d "+d
 nmap <Leader>p "+p
 nmap <Leader>P "+P
@@ -230,17 +227,18 @@ let g:UltiSnipsExpandTrigger="<Tab>"
 let g:UltiSnipsJumpForwardTrigger="<Tab>"
 let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
-"Gundo
-nnoremap <silent> <F5> :GundoToggle<CR>
-
 "Vimux
 let g:VimuxOrientation="h"
 let g:VimuxHeight="40"
 
 "CtrlP ignore
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.gif,*.png,*.pdf
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.jpg,*.gif,*.png,*.pdf,*.vo,*.glob,*.v.d
 
 let g:ctrlp_working_path_mode = 'ra'
+
+nnoremap <C-F> :CtrlPFunky<Cr>
+let g:ctrlp_funky_syntax_highlight = 1
+let g:ctrlp_funky_multi_buffers = 1
 
 " Airline stuff
 " Enable the list of buffers
@@ -285,7 +283,7 @@ let g:startify_list_order = [
 			\ ['===> Bookmarks'], 'bookmarks',
 			\ ['===> Recent Files'], 'files', 
 			\ ['===> Directory'], 'dir' ]
-let g:startify_bookmarks = [ '~/.nvimrc',  '~/.zshrc', '~/.agenda.org', '~/code' ]
+let g:startify_bookmarks = [ '~/.nvimrc',  '~/.zshrc', '~/.agenda.org', '~/code/', '~/Documents/Notes' ]
 
 let g:startify_custom_header = [
                 \ '   __      ___            ______ 	 ',
@@ -340,21 +338,17 @@ endfunction
 
 let g:qs_enable = 0
 
-nnoremap <expr> <silent> f Quick_scope_selective('f')
-nnoremap <expr> <silent> F Quick_scope_selective('F')
-nnoremap <expr> <silent> t Quick_scope_selective('t')
-nnoremap <expr> <silent> T Quick_scope_selective('T')
-vnoremap <expr> <silent> f Quick_scope_selective('f')
-vnoremap <expr> <silent> F Quick_scope_selective('F')
-vnoremap <expr> <silent> t Quick_scope_selective('t')
-vnoremap <expr> <silent> T Quick_scope_selective('T')
+if has("nvim")
+    nnoremap <expr> <silent> f Quick_scope_selective('f')
+    nnoremap <expr> <silent> F Quick_scope_selective('F')
+    nnoremap <expr> <silent> t Quick_scope_selective('t')
+    nnoremap <expr> <silent> T Quick_scope_selective('T')
+    vnoremap <expr> <silent> f Quick_scope_selective('f')
+    vnoremap <expr> <silent> F Quick_scope_selective('F')
+    vnoremap <expr> <silent> t Quick_scope_selective('t')
+    vnoremap <expr> <silent> T Quick_scope_selective('T')
+endif
 
-
-""" Zealvim
-
-let g:zv_added_files_type = {
-    \ 'hs': 'Haskell',
-    \ }
 
 """ Coquille
 
@@ -364,3 +358,11 @@ let g:coquille_auto_move = "true"
 """ vim-orgmode
 
 let g:org_agenda_files = ['~/.agenda.org']
+
+""" LatexBox
+
+let g:LatexBox_ignore_warnings = [
+      \ 'Package caption Warning',
+      \ 'Package caption2 Warning',
+      \ 'Package hyperref Warning',
+      \ ]

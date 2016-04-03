@@ -8,6 +8,13 @@ snippet "b(egin)?" "begin{} / end{}" br
 \end{$1}
 endsnippet
 
+
+snippet lst "code_snippet" b
+\begin{lstlisting}[basicstyle=\small]
+	$0
+\end{lstlisting}
+endsnippet
+
 snippet tab "tabular / array environment" b
 \begin{${1:t}${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${2:c}}
 $0${2/((?<=.)c|l|r)|./(?1: & )/g}
