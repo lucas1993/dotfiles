@@ -157,12 +157,14 @@ export PATH="$HOME/.linuxbrew/bin:$PATH"
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 
-export NVIM_TUI_ENABLE_TRUE_COLOR=1
+#export NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 export XDG_CACHE_HOME=$HOME/.cache
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share 
 export __GL_SHADER_DISK_CACHE_PATH=$XDG_CACHE_HOME/nv
+
+export GOPATH=$HOME/.gocode
 
 # Não esquecer de adicionar o tmux na execução do terminal principal!
 # "tmux -2 new-session -s tmux"

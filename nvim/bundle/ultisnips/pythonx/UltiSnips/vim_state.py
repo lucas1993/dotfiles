@@ -3,19 +3,22 @@
 
 """Some classes to conserve Vim's state for comparing over time."""
 
-from collections import deque
+from collections import deque, namedtuple
 
 from UltiSnips import _vim
 from UltiSnips.compatibility import as_unicode, byte2col
 from UltiSnips.position import Position
 
+_Placeholder = namedtuple('_FrozenPlaceholder', ['current_text', 'start', 'end'])
+
 class VimPosition(Position):
+
     """Represents the current position in the buffer, together with some status
     variables that might change our decisions down the line."""
 
     def __init__(self):
         pos = _vim.buf.cursor
-        self._mode = _vim.eval("mode()")
+        self._mode = _vim.eval('mode()')
         Position.__init__(self, pos.line, pos.col)
 
     @property
@@ -23,7 +26,9 @@ class VimPosition(Position):
         """Returns the mode() this position was created."""
         return self._mode
 
+
 class VimState(object):
+
     """Caches some state information from Vim to better guess what editing
     tasks the user might have done in the last step."""
 
@@ -31,27 +36,38 @@ class VimState(object):
         self._poss = deque(maxlen=5)
         self._lvb = None
 
-        self._text_to_expect = None
-        self._unnamed_reg_cache = None
+        self._text_to_expect = ''
         self._unnamed_reg_cached = False
 
+        # We store the cached value of the unnamed register in Vim directly to
+        # avoid any Unicode issues with saving and restoring the unnamed
+        # register across the Python bindings.  The unnamed register can contain
+        # data that cannot be coerced to Unicode, and so a simple vim.eval('@"')
+        # fails badly.  Keeping the cached value in Vim directly, sidesteps the
+        # problem.
+        _vim.command('let g:_ultisnips_unnamed_reg_cache = ""')
+
     def remember_unnamed_register(self, text_to_expect):
-        """Save the unnamed register. 'text_to_expect' is text that we expect
+        """Save the unnamed register.
+
+        'text_to_expect' is text that we expect
         to be contained in the register the next time this method is called -
         this could be text from the tabstop that was selected and might have
-        been overwritten. We will not cash that then."""
+        been overwritten. We will not cache that then.
+
+        """
         self._unnamed_reg_cached = True
-        unnamed_reg = _vim.eval('@"')
-        if unnamed_reg != self._text_to_expect:
-            self._unnamed_reg_cache = unnamed_reg
+        escaped_text = self._text_to_expect.replace("'", "''")
+        res = int(_vim.eval('@" != ' + "'" + escaped_text + "'"))
+        if res:
+            _vim.command('let g:_ultisnips_unnamed_reg_cache = @"')
         self._text_to_expect = text_to_expect
 
     def restore_unnamed_register(self):
         """Restores the unnamed register and forgets what we cached."""
         if not self._unnamed_reg_cached:
             return
-        escaped_cache = self._unnamed_reg_cache.replace("'", "''")
-        _vim.command("let @\"='%s'" % escaped_cache)
+        _vim.command('let @" = g:_ultisnips_unnamed_reg_cache')
         self._unnamed_reg_cached = False
 
     def remember_position(self):
@@ -60,7 +76,7 @@ class VimState(object):
 
     def remember_buffer(self, to):
         """Remember the content of the buffer and the position."""
-        self._lvb = _vim.buf[to.start.line:to.end.line+1]
+        self._lvb = _vim.buf[to.start.line:to.end.line + 1]
         self._lvb_len = len(_vim.buf)
         self.remember_position()
 
@@ -85,7 +101,9 @@ class VimState(object):
         """The content of the remembered buffer."""
         return self._lvb[:]
 
+
 class VisualContentPreserver(object):
+
     """Saves the current visual selection and the selection mode it was done in
     (e.g. line selection, block selection or regular selection.)"""
 
@@ -94,29 +112,40 @@ class VisualContentPreserver(object):
 
     def reset(self):
         """Forget the preserved state."""
-        self._mode = ""
-        self._text = as_unicode("")
+        self._mode = ''
+        self._text = as_unicode('')
+        self._placeholder = None
 
     def conserve(self):
         """Save the last visual selection ond the mode it was made in."""
         sl, sbyte = map(int,
-                (_vim.eval("""line("'<")"""), _vim.eval("""col("'<")""")))
+                        (_vim.eval("""line("'<")"""), _vim.eval("""col("'<")""")))
         el, ebyte = map(int,
-                (_vim.eval("""line("'>")"""), _vim.eval("""col("'>")""")))
+                        (_vim.eval("""line("'>")"""), _vim.eval("""col("'>")""")))
         sc = byte2col(sl, sbyte - 1)
         ec = byte2col(el, ebyte - 1)
-        self._mode = _vim.eval("visualmode()")
+        self._mode = _vim.eval('visualmode()')
 
         _vim_line_with_eol = lambda ln: _vim.buf[ln] + '\n'
 
         if sl == el:
-            text = _vim_line_with_eol(sl-1)[sc:ec+1]
+            text = _vim_line_with_eol(sl - 1)[sc:ec + 1]
         else:
-            text = _vim_line_with_eol(sl-1)[sc:]
-            for cl in range(sl, el-1):
+            text = _vim_line_with_eol(sl - 1)[sc:]
+            for cl in range(sl, el - 1):
                 text += _vim_line_with_eol(cl)
-            text += _vim_line_with_eol(el-1)[:ec+1]
+            text += _vim_line_with_eol(el - 1)[:ec + 1]
         self._text = text
+
+    def conserve_placeholder(self, placeholder):
+        if placeholder:
+            self._placeholder = _Placeholder(
+                placeholder.current_text,
+                placeholder.start,
+                placeholder.end
+            )
+        else:
+            self._placeholder = None
 
     @property
     def text(self):
@@ -127,3 +156,8 @@ class VisualContentPreserver(object):
     def mode(self):
         """The conserved visualmode()."""
         return self._mode
+
+    @property
+    def placeholder(self):
+        """Returns latest selected placeholder."""
+        return self._placeholder

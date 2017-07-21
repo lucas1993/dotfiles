@@ -4,11 +4,28 @@
 "vim-dispatch cammelcasemotion vim-fugitive tabular vim-autoclose syntastic
 "vim-visual-star-search vim-instant-markdown
 
+"netrw
+
+" absolute width of netrw window
+let g:netrw_winsize = -28
+
+" do not display info on the top of window
+let g:netrw_banner = 0
+
+" tree-view
+let g:netrw_liststyle = 3
+
+" sort is affecting only: directories on the top, files below
+let g:netrw_sort_sequence = '[\/]$,*'
+
+" use the previous window to open file
+let g:netrw_browse_split = 4
 
 "================================================== Config
 set number
 
 set tags=./.tags
+set tags+=./tags
 set noswapfile
 
 syntax on
@@ -27,11 +44,15 @@ let php_htmlInStrings=1
 autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
 autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
 
+
+"set nofoldenable
+"
+set foldnestmax=1
+
 if has("nvim")
     autocmd BufWrite * exe ":Neomake"
 endif
 
-set nofoldenable
 
 "Complete menu color
 highlight Pmenu ctermbg=238 gui=bold
@@ -85,6 +106,7 @@ endif
 if has("nvim")
     tnoremap <Esc> <C-\><C-n>
     tnoremap <C-[> <C-\><C-n>
+    :colorscheme kolor
 else
     :colorscheme kolor
 endif
@@ -144,8 +166,10 @@ endfunction
 
 
 " :Nt as NerdTree
-map :Nt :NERDTree
-nnoremap <silent> <C-N> :NERDTreeToggle<CR>
+"map :Nt :NERDTree
+"nnoremap <silent> <C-N> :NERDTreeToggle<CR>
+nnoremap <silent> <C-N> :Lexplore<CR>
+let g:netrw_list_hide= '.*\.o$'
 
 "Space as Leader
 let mapleader = "\<Space>"

@@ -1,20 +1,21 @@
 let SessionLoad = 1
+if &cp | set nocp | endif
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/code/TCC/Monografia
+cd ~/Dropbox/Lucas\ Amaral/texto/dissertacao
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +34 monografia.tex
-badd +6 bibliografia.bib
-badd +146 tex/1_Introducao.tex
-badd +12 Outline.md
+badd +29 dissertacao.tex
+badd +253 tex/1_Introducao.tex
+badd +115 tex/2_E_calculus.tex
+badd +19 notation.tex
 argglobal
 silent! argdel *
-argadd monografia.tex
-edit monografia.tex
+argadd dissertacao.tex
+edit tex/2_E_calculus.tex
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -27,17 +28,17 @@ setlocal fmr={{{,}}}
 setlocal fdi=#
 setlocal fdl=0
 setlocal fml=1
-setlocal fdn=20
-setlocal nofen
+setlocal fdn=1
+setlocal fen
 silent! normal! zE
-let s:l = 29 - ((28 * winheight(0) + 23) / 47)
+let s:l = 546 - ((45 * winheight(0) + 23) / 47)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-29
-normal! 0
+546
+normal! 05|
 tabnext 1
-if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
+if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
