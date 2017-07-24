@@ -100,13 +100,15 @@ fi
 
 # Prompt always on bottom
 precmd() {
-	echo -en "\033[50;0f"
+	#echo -en "\033[50;0f"
+	echo -en "\033"
 }
 
 # Prompt on bottom after ^L
 cls() {
 	clear
-	echo -en "\033[50;0f"
+	#echo -en "\033[50;0f"
+    tput cup "$LINES"
 	zle reset-prompt
 }
 zle -N cls
@@ -146,6 +148,7 @@ zle -N fancy-ctrl-z
 bindkey '^Z' fancy-ctrl-z
 
 clear
+tput cup "$LINES"
 
 
 eval "$(rbenv init -)"
