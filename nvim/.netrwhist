@@ -1,4 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/home/amaral/code/mestrado/ksp-0.1.0/src'
-let g:netrw_dirhist_2='/home/amaral/code/mestrado/trabalhos_logica/t1/correcoes'
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/home/amaral/Documents/renovabio/anp-renovabio/trunk/anp-renovabio-web-angular/src/app'
+let g:netrw_dirhist_2='/home/amaral/Documents/renovabio/anp-renovabio/trunk/anp-renovabio-web-angular/src'
+let g:netrw_dirhist_3='/home/amaral/Documents/renovabio/anp-renovabio/trunk/anp-renovabio-web-angular'
+let g:netrw_dirhist_4='/home/amaral/.local/bin/EAP-6.3.0/jboss-eap-6.3/standalone/configuration'

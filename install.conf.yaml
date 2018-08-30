@@ -3,8 +3,9 @@
 - link:
     ~/.dotfiles: ''
     ~/.tmux.conf: tmux.conf
-    ~/.vim: vim/
-    ~/.vimrc: vimrc
+    ~/.vim: nvim/
+    ~/.nvim: nvim/
+    ~/.nvimrc: nvim/init.vim
     ~/.oh-my-zsh: oh-my-zsh
     ~/.zshrc: zshrc
     ~/.bash_aliases: bash_aliases

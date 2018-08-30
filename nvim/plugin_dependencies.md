@@ -1,25 +1,3 @@
-Coq
-===
-
-coquille.vim
-- vimbufsync
-- Coq
-
-
-Haskell
-=======
-
-vim-haskellConcealPlus
-- Fonte compatível.
-
-ghcmod-vim
-- ghcmod
-- vimproc.vim
-
-vimproc.vim
-- make
-
-
 Markdown
 ========
 
@@ -30,17 +8,11 @@ vim-insntant-markdown
 Geral
 =====
 
-pathogen
-- Lembrar de usar :Helptags pra criar os arquivos de help!
-
-vimux
-- Tmux
+Plug.vim
+- Lembrar de dar PlugInstall
 
 neomake
 - Neovim
-
-ctrlp-funky
-- CtrlP
 
 vim-airline
 - Fonte compatível (https://github.com/powerline/fonts)
@@ -55,11 +27,8 @@ nvimex.py
 neoterm
 - Neovim
 
-Agenda
-======
+LanguageClient-neovim
+- LanguageServers apropriados
 
-vim-orgmode
-- Universal Text Linking (utl.vim)
-- vim-repeat
-- vim-speedating
-- calendar.vim
+CtrlP
+- Ag

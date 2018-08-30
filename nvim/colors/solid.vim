@@ -174,8 +174,8 @@ else
 endif
 
 if &t_Co > 255
-  "highlight Normal          ctermfg=251     ctermbg=232     cterm=none
-  highlight Normal          ctermfg=251     ctermbg=Black     cterm=none
+  highlight Normal          ctermfg=251     ctermbg=232     cterm=none
+  "highlight Normal          ctermfg=251     ctermbg=Black     cterm=none
   highlight SpecialKey      ctermfg=111     ctermbg=none    cterm=none
   "highlight NonText         ctermfg=111     ctermbg=235     cterm=none
   highlight Directory       ctermfg=180     ctermbg=none    cterm=none

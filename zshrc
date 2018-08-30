@@ -114,7 +114,7 @@ cls() {
 zle -N cls
 bindkey '^L' cls
 
-export EDITOR=nvim
+export EDITOR=vim
 unset GNOME_KEYRING_CONTROL
 
 # Get color support for 'less'
@@ -154,7 +154,7 @@ tput cup "$LINES"
 eval "$(rbenv init -)"
 
 export TERM=screen-256color
-export NVIM_LISTEN_ADDRESS=/tmp/nvim nvim
+#export NVIM_LISTEN_ADDRESS=/tmp/nvim nvim
 
 export PATH="$HOME/.linuxbrew/bin:$PATH"
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
@@ -171,3 +171,17 @@ export GOPATH=$HOME/.gocode
 
 # Não esquecer de adicionar o tmux na execução do terminal principal!
 # "tmux -2 new-session -s tmux"
+
+
+# Oracle configuration
+export ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe
+export ORACLE_SID=XE
+export NLS_LANG=`$ORACLE_HOME/bin/nls_lang.sh`
+export ORACLE_BASE=/u01/app/oracle
+export LD_LIBRARY_PATH=$ORACLE_HOME/lib:$LD_LIBRARY_PATH
+export PATH=$ORACLE_HOME/bin:$PATH
+
+export NVM_DIR="/home/amaral/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

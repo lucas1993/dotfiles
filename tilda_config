@@ -34,6 +34,7 @@ max_height = 768
 min_width = 1
 min_height = 1
 transparency = 8
+back_alpha=60287
 x_pos = 0
 y_pos = 0
 tab_pos = 0

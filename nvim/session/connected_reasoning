@@ -2,24 +2,26 @@ let SessionLoad = 1
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
 silent only
-cd ~/Dropbox/Lucas\ Amaral/texto/dissertacao
+cd ~/code/mestrado/connected-reasoning
 if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +593 tex/4_E_calculus.tex
-badd +1 tex/5_Correctness.tex
-badd +229 bibliografia.bib
+badd +665 ~/code/mestrado/connected-reasoning/src/processing.c
+badd +163 ~/code/mestrado/connected-reasoning/src/parser.y
+badd +332 ~/code/mestrado/connected-reasoning/src/prover.c
+badd +1 ~/code/mestrado/connected-reasoning/src/snf++.c
+badd +1 ~/code/mestrado/connected-reasoning/src/renaming.c
+badd +2 ~/code/mestrado/connected-reasoning/src/symbol_table.c
+badd +0 ~/code/mestrado/connected-reasoning/src/clauses.c
 argglobal
 silent! argdel *
-edit tex/4_E_calculus.tex
+edit ~/code/mestrado/connected-reasoning/src/clauses.c
 set splitbelow splitright
-set nosplitbelow
-set nosplitright
 wincmd t
 set winminheight=1 winminwidth=1 winheight=1 winwidth=1
 argglobal
-setlocal fdm=manual
+setlocal fdm=syntax
 setlocal fde=0
 setlocal fmr={{{,}}}
 setlocal fdi=#
@@ -27,19 +29,18 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-silent! normal! zE
-let s:l = 574 - ((9 * winheight(0) + 20) / 41)
+let s:l = 63 - ((2 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-574
-normal! 026|
+63
+normal! 0
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
 endif
 unlet! s:wipebuf
-set winheight=1 winwidth=20 winminheight=1 winminwidth=1 shortmess=filnxtToO
+set winheight=1 winwidth=20 winminheight=1 winminwidth=1 shortmess=filnxtToOI
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if file_readable(s:sx)
   exe "source " . fnameescape(s:sx)

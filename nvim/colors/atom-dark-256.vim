@@ -25,6 +25,9 @@ function! s:old_kde()
   endif
 endfunction
 
+
+    "CSAHi Normal term=NONE cterm=NONE ctermbg=234 ctermfg=231 gui=NONE guibg=#1D1F21 guifg=#F8F8F2
+
 if 0
 elseif has("gui_running") || (&t_Co == 256 && (&term ==# "xterm" || &term =~# "^screen") && exists("g:CSApprox_konsole") && g:CSApprox_konsole) || (&term =~? "^konsole" && s:old_kde())
     CSAHi Normal term=NONE cterm=NONE ctermbg=234 ctermfg=231 gui=NONE guibg=#1D1F21 guifg=#F8F8F2
@@ -46,7 +49,8 @@ elseif has("gui_running") || (&t_Co == 256 && (&term ==# "xterm" || &term =~# "^
     CSAHi Directory term=bold cterm=NONE ctermbg=bg ctermfg=248 gui=NONE guibg=bg guifg=#AAAAAA
     CSAHi ErrorMsg term=NONE cterm=NONE ctermbg=235 ctermfg=153 gui=NONE guibg=#232526 guifg=#92C5F7
     CSAHi IncSearch term=reverse cterm=reverse ctermbg=187 ctermfg=16 gui=reverse guibg=#000000 guifg=#C4BE89
-    CSAHi Search term=reverse cterm=NONE ctermbg=193 ctermfg=16 gui=NONE guibg=#B4EC85 guifg=#000000
+    CSAHi Search term=reverse cterm=reverse ctermbg=187 ctermfg=16 gui=reverse guibg=#000000 guifg=#C4BE89
+    " CSAHi Search term=reverse cterm=NONE ctermbg=193 ctermfg=16 gui=NONE guibg=#B4EC85 guifg=#000000
     CSAHi MoreMsg term=bold cterm=bold ctermbg=bg ctermfg=156 gui=bold guibg=bg guifg=#A8FF60
     CSAHi ModeMsg term=bold cterm=bold ctermbg=bg ctermfg=156 gui=bold guibg=bg guifg=#A8FF60
     CSAHi LineNr term=underline cterm=NONE ctermbg=235 ctermfg=66 gui=NONE guibg=#232526 guifg=#465457
@@ -366,7 +370,8 @@ elseif has("gui_running") || (&t_Co == 256 && (&term ==# "xterm" || &term =~# "^
     CSAHi Directory term=bold cterm=NONE ctermbg=bg ctermfg=188 gui=NONE guibg=bg guifg=#AAAAAA
     CSAHi ErrorMsg term=NONE cterm=NONE ctermbg=235 ctermfg=159 gui=NONE guibg=#232526 guifg=#92C5F7
     CSAHi IncSearch term=reverse cterm=reverse ctermbg=223 ctermfg=16 gui=reverse guibg=#000000 guifg=#C4BE89
-    CSAHi Search term=reverse cterm=NONE ctermbg=193 ctermfg=16 gui=NONE guibg=#B4EC85 guifg=#000000
+    CSAHi Search term=reverse cterm=reverse ctermbg=223 ctermfg=16 gui=reverse guibg=#000000 guifg=#C4BE89
+    " CSAHi Search term=reverse cterm=NONE ctermbg=193 ctermfg=16 gui=NONE guibg=#B4EC85 guifg=#000000
     CSAHi MoreMsg term=bold cterm=bold ctermbg=bg ctermfg=192 gui=bold guibg=bg guifg=#A8FF60
     CSAHi ModeMsg term=bold cterm=bold ctermbg=bg ctermfg=192 gui=bold guibg=bg guifg=#A8FF60
     CSAHi LineNr term=underline cterm=NONE ctermbg=235 ctermfg=102 gui=NONE guibg=#232526 guifg=#465457
@@ -686,7 +691,8 @@ elseif has("gui_running") || &t_Co == 256
     CSAHi Directory term=bold cterm=NONE ctermbg=bg ctermfg=248 gui=NONE guibg=bg guifg=#AAAAAA
     CSAHi ErrorMsg term=NONE cterm=NONE ctermbg=235 ctermfg=117 gui=NONE guibg=#232526 guifg=#92C5F7
     CSAHi IncSearch term=reverse cterm=reverse ctermbg=180 ctermfg=16 gui=reverse guibg=#000000 guifg=#C4BE89
-    CSAHi Search term=reverse cterm=NONE ctermbg=156 ctermfg=16 gui=NONE guibg=#B4EC85 guifg=#000000
+    CSAHi Search term=reverse cterm=reverse ctermbg=180 ctermfg=16 gui=reverse guibg=#000000 guifg=#C4BE89
+    " CSAHi Search term=reverse cterm=NONE ctermbg=156 ctermfg=16 gui=NONE guibg=#B4EC85 guifg=#000000
     CSAHi MoreMsg term=bold cterm=bold ctermbg=bg ctermfg=155 gui=bold guibg=bg guifg=#A8FF60
     CSAHi ModeMsg term=bold cterm=bold ctermbg=bg ctermfg=155 gui=bold guibg=bg guifg=#A8FF60
     CSAHi LineNr term=underline cterm=NONE ctermbg=235 ctermfg=59 gui=NONE guibg=#232526 guifg=#465457
@@ -1006,7 +1012,8 @@ elseif has("gui_running") || &t_Co == 88
     CSAHi Directory term=bold cterm=NONE ctermbg=bg ctermfg=84 gui=NONE guibg=bg guifg=#AAAAAA
     CSAHi ErrorMsg term=NONE cterm=NONE ctermbg=80 ctermfg=43 gui=NONE guibg=#232526 guifg=#92C5F7
     CSAHi IncSearch term=reverse cterm=reverse ctermbg=57 ctermfg=16 gui=reverse guibg=#000000 guifg=#C4BE89
-    CSAHi Search term=reverse cterm=NONE ctermbg=61 ctermfg=16 gui=NONE guibg=#B4EC85 guifg=#000000
+    CSAHi Search term=reverse cterm=reverse ctermbg=57 ctermfg=16 gui=reverse guibg=#000000 guifg=#C4BE89
+    " CSAHi Search term=reverse cterm=NONE ctermbg=61 ctermfg=16 gui=NONE guibg=#B4EC85 guifg=#000000
     CSAHi MoreMsg term=bold cterm=bold ctermbg=bg ctermfg=45 gui=bold guibg=bg guifg=#A8FF60
     CSAHi ModeMsg term=bold cterm=bold ctermbg=bg ctermfg=45 gui=bold guibg=bg guifg=#A8FF60
     CSAHi LineNr term=underline cterm=NONE ctermbg=80 ctermfg=81 gui=NONE guibg=#232526 guifg=#465457
