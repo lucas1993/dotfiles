@@ -185,3 +185,5 @@ export NVM_DIR="/home/amaral/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+fpath=(~/.zsh/completion $fpath)

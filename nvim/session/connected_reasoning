@@ -7,16 +7,16 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +665 ~/code/mestrado/connected-reasoning/src/processing.c
-badd +163 ~/code/mestrado/connected-reasoning/src/parser.y
+badd +658 ~/code/mestrado/connected-reasoning/src/processing.c
 badd +332 ~/code/mestrado/connected-reasoning/src/prover.c
 badd +1 ~/code/mestrado/connected-reasoning/src/snf++.c
-badd +1 ~/code/mestrado/connected-reasoning/src/renaming.c
-badd +2 ~/code/mestrado/connected-reasoning/src/symbol_table.c
-badd +0 ~/code/mestrado/connected-reasoning/src/clauses.c
+badd +63 ~/code/mestrado/connected-reasoning/src/clauses.c
+badd +298 ~/code/mestrado/connected-reasoning/src/snf.c
+badd +696 ~/code/mestrado/connected-reasoning/src/parser.y
+badd +0 ~/code/mestrado/connected-reasoning/src/symbol_table.c
 argglobal
 silent! argdel *
-edit ~/code/mestrado/connected-reasoning/src/clauses.c
+edit ~/code/mestrado/connected-reasoning/src/symbol_table.c
 set splitbelow splitright
 wincmd t
 set winminheight=1 winminwidth=1 winheight=1 winwidth=1
@@ -29,12 +29,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 63 - ((2 * winheight(0) + 20) / 41)
+let s:l = 290 - ((28 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-63
-normal! 0
+290
+normal! 010|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

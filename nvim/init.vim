@@ -17,6 +17,7 @@ Plug 'tpope/vim-commentary'
 Plug 'gibiansky/vim-latex-objects'
 Plug 'kassio/neoterm'
 Plug 'machakann/vim-highlightedyank'
+Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 

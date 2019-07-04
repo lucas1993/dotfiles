@@ -7,13 +7,14 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
-badd +28 ~/Documents/renovabio/anp-renovabio/trunk/anp-renovabio-web-angular/src/app/app.module.ts
-badd +28 ~/Documents/renovabio/anp-renovabio/trunk/anp-renovabio-web-angular/src/app/resposta/resposta.service.ts
-badd +19 ~/Documents/renovabio/anp-renovabio/trunk/anp-renovabio-web-angular/src/app/enviar-simulacao/enviar-simulacao.component.ts
-badd +72 ~/Documents/renovabio/anp-renovabio/trunk/anp-renovabio-web-angular/src/app/login/login.service.ts
+badd +28 src/app/app.module.ts
+badd +76 src/app/enviar-simulacao/enviar-simulacao.component.ts
+badd +79 src/app/enviar-simulacao/enviar-simulacao.component.html
+badd +174 src/app/rotas/rota-formulario/rota-formulario.component.ts
+badd +85 src/app/resposta/resposta.service.ts
 argglobal
 silent! argdel *
-edit ~/Documents/renovabio/anp-renovabio/trunk/anp-renovabio-web-angular/src/app/enviar-simulacao/enviar-simulacao.component.ts
+edit src/app/enviar-simulacao/enviar-simulacao.component.ts
 set splitbelow splitright
 set nosplitbelow
 set nosplitright
@@ -29,12 +30,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal nofen
 silent! normal! zE
-let s:l = 19 - ((18 * winheight(0) + 20) / 41)
+let s:l = 81 - ((15 * winheight(0) + 20) / 41)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-19
-normal! 0
+81
+normal! 017|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
