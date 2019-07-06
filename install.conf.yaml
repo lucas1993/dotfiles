@@ -4,6 +4,7 @@
     ~/.dotfiles: ''
     ~/.tmux.conf: tmux.conf
     ~/.vim: nvim/
+    ~/.vimrc: vimrc
     ~/.nvim: nvim/
     ~/.nvimrc: nvim/init.vim
     ~/.oh-my-zsh: oh-my-zsh
