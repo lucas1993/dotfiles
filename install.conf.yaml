@@ -11,4 +11,5 @@
     ~/.zshrc: zshrc
     ~/.bash_aliases: bash_aliases
     ~/.cgdb: cgdb/
+    ~/.gitconfig: gitconfig
 
