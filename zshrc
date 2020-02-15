@@ -156,7 +156,8 @@ tput cup "$LINES"
 export TERM=screen-256color
 #export NVIM_LISTEN_ADDRESS=/tmp/nvim nvim
 
-export PATH="$HOME/.linuxbrew/bin:$PATH"
+export GOPATH=$HOME/.gocode/bin
+export PATH="/snap/bin:$GOPATH:$PATH"
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 
@@ -167,7 +168,6 @@ export XDG_CONFIG_HOME=$HOME/.config
 export XDG_DATA_HOME=$HOME/.local/share 
 export __GL_SHADER_DISK_CACHE_PATH=$XDG_CACHE_HOME/nv
 
-export GOPATH=$HOME/.gocode
 
 # Não esquecer de adicionar o tmux na execução do terminal principal!
 # "tmux -2 new-session -s tmux"
@@ -179,3 +179,7 @@ export NVM_DIR="/home/amaral/.nvm"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 fpath=(~/.zsh/completion $fpath)
+
+source .dotfiles/z.sh
+
+source /home/amaral/.config/broot/launcher/bash/br

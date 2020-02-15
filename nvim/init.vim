@@ -4,7 +4,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline' 
-"| Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline-themes' 
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'mhartington/vim-angular2-snippets'
 Plug 'mhinz/vim-startify'

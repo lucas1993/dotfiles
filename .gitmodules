@@ -1,3 +1,6 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
+[submodule "nvim/plugged/vim-airline-themes"]
+	path = nvim/plugged/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes
