@@ -7,6 +7,8 @@ email = lucasmouraamaral@gmail.com
     logs = log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%ar)%d - %Creset%s%Creset %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     mylog = !git log --author=\"$(git config user.name)\"
     sl = stash list --pretty=format:\"%C(red)%h%C(reset) - %C(dim yellow)(%C(bold magenta)%gd%C(dim yellow))%C(reset) %<(70,trunc)%s %C(green)(%cr) %C(bold blue)<%an>%C(reset)\"
+    fpull = "!git fetch origin $(git rev-parse --abbrev-ref HEAD) && git reset --hard @{upstream}"
+    fpush = "!git fetch origin $(git rev-parse --abbrev-ref HEAD) && git reset --hard @{upstream}"
 
 [merge]
     tool = vimdiff
