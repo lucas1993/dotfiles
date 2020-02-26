@@ -1,4 +1,3 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =2
-let g:netrw_dirhist_1='/home/lucas/.mozilla/firefox/i5nr9sfj.default/chrome'
-let g:netrw_dirhist_2='/home/lucas/.mozilla/firefox/i5nr9sfj.default'
+let g:netrw_dirhistcnt =1
+let g:netrw_dirhist_1='/home/amaral/.local/bin'

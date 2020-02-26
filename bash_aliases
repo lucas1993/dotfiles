@@ -18,11 +18,14 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
+alias ls='exa'
+alias ll='exa -lF --icons --git'
+alias la='exa -a'
 alias l='ls -CF'
 alias sh='bash'
 #alias nvim='NVIM_LISTEN_ADDRESS=/tmp/nvim nvim'
 alias nv='~/.dotfiles/nvimex.py '
 #alias notruecolor='export NVIM_TUI_ENABLE_TRUE_COLOR=0'
 alias gs='git status'
+
+alias lx='trash-put'

@@ -1,0 +1,168 @@
+"================================================== Plugin install
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-surround'
+Plug 'bronson/vim-visual-star-search'
+Plug 'junegunn/vim-slash'
+Plug 'gibiansky/vim-latex-objects'
+
+call plug#end()
+
+set noswapfile
+
+syntax on
+
+set ttyfast
+
+set completeopt=menu
+
+
+set hidden
+set laststatus=2
+
+set incsearch
+set inccommand=nosplit
+set hlsearch
+
+set tabstop=4  "tab = 4 chars
+set shiftwidth=4 "Auto-indent tab = 4 chars
+set expandtab
+set virtualedit=onemore "Go one past last character in line
+set virtualedit+=block " Free V-Block
+filetype indent on 
+filetype plugin on
+
+" CD to dir
+autocmd VimEnter * lcd %:p:h
+
+" Highlight current line
+"set cursorline
+hi CursorLine   cterm=NONE ctermbg=234 ctermfg=NONE
+set nostartofline
+
+set guicursor=n-v-c:block,i-ci-ve:ver25,r-cr:hor20,o:hor50,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,sm:block-blinkwait175-blinkoff150-blinkon175 
+
+
+"Ctrl+s/Ctrl+Q reach VIM
+silent !stty -ixon > /dev/null 2>/dev/null
+
+set whichwrap+=<,>,h,l,[,]
+
+set wildmenu
+set wildmode=list:longest,full
+set wildignore=*.o,*~,*.pyc,*.pyo,*.so,*.sw*,__pycache__
+
+if filereadable('.vimrc.local')
+	source .vimrc.local
+endif
+
+"================================================== Folding
+
+" Don't screw up folds when inserting text that might affect them, until
+" leaving insert mode. Foldmethod is local to the window. Protect against
+" screwing up folding when switching between windows.
+"autocmd InsertEnter * if !exists('w:last_fdm') | let w:last_fdm=&foldmethod | setlocal foldmethod=manual | endif
+"autocmd InsertLeave,WinLeave * if exists('w:last_fdm') | let &l:foldmethod=w:last_fdm | unlet w:last_fdm | endif
+
+
+set nofoldenable
+"
+"set foldnestmax=1
+
+"================================================== Mappings
+
+
+nnoremap <C-\> <Esc>
+vnoremap <C-\> <Esc>
+inoremap <C-\> <Esc>
+
+
+nnoremap gi gi<Esc>
+nnoremap gl `.
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+"Help as vertical split
+cnoremap hv vert bo h
+
+vnoremap K k
+inoremap <C-H> <Left>
+inoremap <C-L> <Right>
+inoremap <C-K> <Up>
+inoremap <C-J> <Down>
+inoremap <C-E> <C-O>w
+inoremap <C-B> <C-O>b
+
+nnoremap <Up> <nop>
+nnoremap <Down> <nop>
+nnoremap <Right> <nop>
+nnoremap <Left> <nop>
+
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+inoremap <Nul> <Space>
+
+
+"Space as Leader
+let mapleader = "\<Space>"
+
+"<Leader>R/B to open mru/bufferlist
+
+"Ctrl+s to save
+:map <C-s> :w <Enter>
+:inoremap <c-s> <c-o>:w<CR>
+
+:noremap <Leader>a $
+
+:noremap j gj
+:noremap k gk
+
+"Buffer stuff
+:nnoremap <Leader>t :enew<CR>
+:nnoremap <Leader>e :e 
+
+:nnoremap <silent> <Leader>q 
+
+"This unsets the "last search pattern" register by hitting return
+nnoremap <silent> <Leader>\ :noh<CR>
+
+"Shift+J/K to insert line below/above without entering insert mode
+:nnoremap <S-J> o<ESC>
+:nnoremap <S-K> O<ESC>
+:nnoremap <silent> <Leader>j :join<cr>
+
+"Pipe ( | ) breaks line
+:nnoremap \| i<CR><ESC>
+
+"Paste without overlapping previous yank
+"vnoremap p "_dP
+"Delete without overlapping previous yank
+"nnoremap D "_d
+"vnoremap D "_d
+"nnoremap c "_c
+nnoremap x "_x
+
+
+vmap <Leader>y "+y
+nnoremap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+
+nnoremap <Leader>zz :syntax sync fromstart<CR>
+
+
+let g:bufferline_echo = 0
+set noshowmode
+
+
+"""""
+
+let g:tex_flavor="latex"
+set grepprg=grep\ -nH\ $* "realmente nao sei
+

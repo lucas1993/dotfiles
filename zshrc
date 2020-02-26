@@ -157,7 +157,7 @@ export TERM=screen-256color
 #export NVIM_LISTEN_ADDRESS=/tmp/nvim nvim
 
 export GOPATH=$HOME/.gocode/bin
-export PATH="/snap/bin:$GOPATH:$PATH"
+export PATH="/home/amaral/.local/bin:/snap/bin:$GOPATH:$PATH"
 export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
 export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
 
@@ -180,6 +180,13 @@ export NVM_DIR="/home/amaral/.nvm"
 
 fpath=(~/.zsh/completion $fpath)
 
-source .dotfiles/z.sh
+bgnotify_threshold=2
+
+source ~/.dotfiles/z.sh
+source ~/.dotfiles/fz.sh
 
 source /home/amaral/.config/broot/launcher/bash/br
+source "$(navi widget zsh)"
+
+source ~/.dotfiles/oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/.dotfiles/oh-my-zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -6,18 +6,14 @@ Plug 'https://github.com/ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline' 
 Plug 'vim-airline/vim-airline-themes' 
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-Plug 'mhartington/vim-angular2-snippets'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'bronson/vim-visual-star-search'
 Plug 'junegunn/vim-slash'
-"Plug 'roxma/nvim-completion-manager'
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-commentary'
 Plug 'gibiansky/vim-latex-objects'
-Plug 'kassio/neoterm'
 Plug 'machakann/vim-highlightedyank'
-Plug 'leafgarland/typescript-vim'
+Plug 'edkolev/tmuxline.vim'
 
 call plug#end()
 
@@ -180,7 +176,6 @@ endfunction
 
 " :Nt as NerdTree
 "map :Nt :NERDTree
-"nnoremap <silent> <C-N> :NERDTreeToggle<CR>
 nnoremap <silent> <C-N> :Lexplore<CR>
 let g:netrw_list_hide= '.*\.o$'
 
@@ -193,13 +188,6 @@ noremap <silent> <Leader>b :CtrlPBuffer<cr>
 
 noremap <silent> <Leader>s :Startify<cr>
 
-if has("nvim")
-	noremap <silent> <Leader>tx :TcloseAll!<CR>
-	noremap <silent> <Leader>tn :Tnew<CR>
-    noremap <silent> <Leader>tt :TtoggleAll<CR> 
-	noremap <silent> <Leader>. :TREPLSendSelection<CR>
-	noremap <silent> <Leader>> :TREPLSendFile<CR>
-endif
 
 "Ctrl+s to save
 :map <C-s> :w <Enter>
@@ -255,19 +243,11 @@ nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
 
-nnoremap <Leader>zz :syntax sync fromstart<CR>
-
 "================================================== Plugin config
 "Markdown
 "Olhar o git pra instalar o npm!
 let g:instant_markdown_autostart = 0
 let g:instant_markdown_slow = 1
-
-"Ultisnips
-
-let g:UltiSnipsExpandTrigger="<Tab>"
-let g:UltiSnipsJumpForwardTrigger="<Tab>"
-let g:UltiSnipsJumpBackwardTrigger="<S-Tab>"
 
 "CtrlP ignore
 
@@ -292,14 +272,13 @@ let g:airline_theme="kolor"
 "let g:monokai_term_italic = 1
 let g:airline#extensions#syntastic#enabled = 1
 
+let g:airline_theme='deus'
 
 "Maneiro
 let g:airline_powerline_fonts = 1
 
 let g:bufferline_echo = 0
 set noshowmode
-
-let g:UltiSnipsSnippetsDir = "/home/amaral/.nvim/bundle/vim-snippets/UltiSnips"
 
 "Highlight yank
 let g:highlightedyank_highlight_duration = 400
@@ -335,62 +314,6 @@ let g:startify_custom_header = [
                 \ ]
 
 let g:startify_session_savevars = ['g:startify_session_savecmds']
-
-
-"""" =========  Syntax checker
-
-let g:neomake_error_sign = {
-            \ 'text': '>>',
-            \ 'texthl': 'ErrorMsg',
-            \ }
-"hi MyWarningMsg ctermbg=3 ctermfg=0
-let g:neomake_warning_sign = {
-            \ 'text': '⚠',
-            \ 'texthl': 'MyWarningMsg',
-            \ }
-
-""" Neoterm
-let g:neoterm_default_mod = 'belowright'
-let g:neoterm_automap_keys = ''
-let g:neoterm_keep_term_open = 0
-let g:neoterm_autoinsert = 1
-autocmd BufWinEnter,WinEnter term://* startinsert
-autocmd BufLeave term://* stopinsert
-
-"" nvim-completion-manager
-"set shortmess+=c
-"inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-"inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-"let g:cm_auto_popup = 0
-
-"if has("nvim")
-    "imap <c-n> <Plug>(cm_force_refresh)
-"endif
-
-""" Language Server
-
-let g:LanguageClient_serverCommands = {
-            \ 'python': ['pyls'],
-            \ }
-
-" Automatically start language servers.
-
-if exists("g:gui_oni")
-    :nnoremap <silent> <Leader>q :bp <BAR> bwipeout #<CR>
-    let g:loaded_airline = 1
-    let s:hidden_all = 1
-    set noshowmode
-    set noruler
-    set laststatus=0
-    set noshowcmd
-end
-if !exists("g:gui_oni")
-    let g:LanguageClient_autoStart = 1
-    nnoremap <silent> gh :call LanguageClient_textDocument_hover()<CR>
-    nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-    nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-
-end
 
 
 

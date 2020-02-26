@@ -83,7 +83,8 @@ highlight LineNr          guifg=#808080    guibg=#242322    gui=none
 highlight StatusLine      guifg=#000000    guibg=#9e9e9e    gui=none
 highlight StatusLineNC    guifg=#b2b2b2    guibg=#4a4a4a    gui=none
 highlight VertSplit       guifg=#4a4a4a    guibg=#4a4a4a    gui=none
-highlight Visual          guifg=#e2e2e2    guibg=#5c5c5c    gui=none
+highlight Visual          guifg=#e2e2e2    guibg=#151515    gui=none
+"highlight Visual          guifg=#e2e2e2    guibg=#5c5c5c    gui=none
 highlight VisualNOS       guifg=#e2e2e2    guibg=NONE       gui=underline
 highlight WildMenu        guifg=#000000    guibg=#75d7d8    gui=none
 highlight Folded          guifg=#8787af    guibg=#242322    gui=none
