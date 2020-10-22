@@ -9,6 +9,10 @@ email = lucasmouraamaral@gmail.com
     sl = stash list --pretty=format:\"%C(red)%h%C(reset) - %C(dim yellow)(%C(bold magenta)%gd%C(dim yellow))%C(reset) %<(70,trunc)%s %C(green)(%cr) %C(bold blue)<%an>%C(reset)\"
     fpull = "!git fetch origin $(git rev-parse --abbrev-ref HEAD) && git reset --hard @{upstream}"
     fpush = "!git fetch origin $(git rev-parse --abbrev-ref HEAD) && git reset --hard @{upstream}"
+    up = "! a=${1:-master}; git fetch origin $a && git branch -f $a origin/$a && git rebase $a #"
+    nb = "!git checkout master && git checkout -b "
+
+
 
 [merge]
     tool = vimdiff
