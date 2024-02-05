@@ -14,7 +14,28 @@ Plug 'tpope/vim-commentary'
 Plug 'gibiansky/vim-latex-objects'
 Plug 'machakann/vim-highlightedyank'
 Plug 'edkolev/tmuxline.vim'
+Plug 'mileszs/ack.vim'
+Plug 'nvim-tree/nvim-web-devicons' " optional, for file icons
+Plug 'nvim-tree/nvim-tree.lua'
+Plug 'bkad/CamelCaseMotion'
 
+Plug 'jparise/vim-graphql'
+
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'neovim/nvim-lspconfig'
+Plug 'ray-x/go.nvim'
+Plug 'ray-x/guihua.lua', {'do': 'cd lua/fzy && make' }
+Plug 'ray-x/navigator.lua'
+
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
+Plug 'hrsh7th/cmp-nvim-lsp-signature-help'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+
+Plug 'lewis6991/gitsigns.nvim'
 call plug#end()
 
 "================================================== Netrw
@@ -176,8 +197,10 @@ endfunction
 
 " :Nt as NerdTree
 "map :Nt :NERDTree
-nnoremap <silent> <C-N> :Lexplore<CR>
-let g:netrw_list_hide= '.*\.o$'
+"nnoremap <silent> <C-N> :Lexplore<CR>
+"let g:netrw_list_hide= '.*\.o$'
+nnoremap <silent> <C-N> :NvimTreeToggle<CR>
+nnoremap <F3> :NvimTreeFindFile<CR>
 
 "Space as Leader
 let mapleader = "\<Space>"
@@ -233,7 +256,7 @@ function! ToggleBackground()
         :colorscheme solid
     end
 endfunction
-nnoremap <F3> :TB<CR>
+"nnoremap <F3> :TB<CR>
 
 vmap <Leader>y "+y
 nnoremap <Leader>y "+y
@@ -242,6 +265,8 @@ nmap <Leader>p "+p
 nmap <Leader>P "+P
 vmap <Leader>p "+p
 vmap <Leader>P "+P
+
+nnoremap <C-f> :Ack!<Space>
 
 "================================================== Plugin config
 "Markdown
@@ -315,5 +340,111 @@ let g:startify_custom_header = [
 
 let g:startify_session_savevars = ['g:startify_session_savecmds']
 
+let g:camelcasemotion_key = ','
 
+lua <<EOF
+require('go').setup()
 
+local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+   require('go.format').goimport()
+  end,
+  group = format_sync_grp,
+})
+
+require('gitsigns').setup()
+require'navigator'.setup()
+EOF
+set completeopt=menu,menuone,noselect
+
+lua <<EOF
+  -- Set up nvim-cmp.
+  local cmp = require'cmp'
+
+  cmp.setup({
+    snippet = {
+      -- REQUIRED - you must specify a snippet engine
+      expand = function(args)
+        -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+        -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+        -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+        vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      end,
+    },
+    window = {
+      -- completion = cmp.config.window.bordered(),
+      -- documentation = cmp.config.window.bordered(),
+    },
+    mapping = cmp.mapping.preset.insert({
+      ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+      ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      ['<C-Space>'] = cmp.mapping.complete(),
+      ['<C-e>'] = cmp.mapping.abort(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+    }),
+    sources = cmp.config.sources({
+      { name = 'nvim_lsp' },
+      { name = 'nvim_lsp_signature_help' },
+      --{ name = 'vsnip' }, -- For vsnip users.
+      -- { name = 'luasnip' }, -- For luasnip users.
+      -- { name = 'ultisnips' }, -- For ultisnips users.
+      -- { name = 'snippy' }, -- For snippy users.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Set configuration for specific filetype.
+  cmp.setup.filetype('gitcommit', {
+    sources = cmp.config.sources({
+      { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
+    }, {
+      { name = 'buffer' },
+    })
+  })
+
+  -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+      { name = 'buffer' }
+    }
+  })
+
+  -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+  cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+  })
+
+  -- Set up lspconfig.
+  local capabilities = require('cmp_nvim_lsp').default_capabilities()
+  capabilities.textDocument.completion.completionItem.snippetSupport = false
+  -- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+  require('lspconfig')['gopls'].setup {
+    capabilities = capabilities
+  }
+
+    -- disable netrw at the very start of your init.lua (strongly advised)
+    vim.g.loaded_netrw = 1
+    vim.g.loaded_netrwPlugin = 1
+
+    -- set termguicolors to enable highlight groups
+    vim.opt.termguicolors = true
+
+    -- empty setup using defaults
+    require("nvim-tree").setup()
+
+    require'nvim-treesitter.configs'.setup {
+         highlight = {
+            -- `false` will disable the whole extension
+            enable = true,
+         }
+    }
+EOF
