@@ -174,7 +174,21 @@ export __GL_SHADER_DISK_CACHE_PATH=$XDG_CACHE_HOME/nv
 
 
 export NVM_DIR="/home/amaral/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+lazy_load_nvm() {
+  unset -f node nvm
+  [[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+}
+
+node() {
+  lazy_load_nvm
+  node $@
+}
+
+nvm() {
+  lazy_load_nvm
+  nvm $@
+}
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
